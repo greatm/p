@@ -10,21 +10,25 @@ namespace p.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+            ViewBag.Message = "welcome";
 
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your app description page.";
+            ViewBag.Message = "us";
+
+            //bDBContext db = new bDBContext();
+            //var whats = db.whatsnews.OrderByDescending(t => t.WorkTime).ToList();
+            //return View(whats);
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "info";
 
             return View();
         }
