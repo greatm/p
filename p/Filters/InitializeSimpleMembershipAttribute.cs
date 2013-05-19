@@ -25,11 +25,11 @@ namespace p.Filters
         {
             public SimpleMembershipInitializer()
             {
-                Database.SetInitializer<UsersContext>(null);
+                Database.SetInitializer<ContextP>(null);
 
                 try
                 {
-                    using (var context = new UsersContext())
+                    using (var context = new ContextP())
                     {
                         if (!context.Database.Exists())
                         {
@@ -38,7 +38,8 @@ namespace p.Filters
                         }
                     }
 
-                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                    //WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                    WebSecurity.InitializeDatabaseConnection("ContextP", "UserProfile", "UserId", "UserName", autoCreateTables: true);
                 }
                 catch (Exception ex)
                 {
