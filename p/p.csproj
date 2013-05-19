@@ -186,6 +186,7 @@
     <Compile Include="Controllers\MasterProductController.cs" />
     <Compile Include="Controllers\MasterVendorController.cs" />
     <Compile Include="Controllers\PurchaseContractController.cs" />
+    <Compile Include="Controllers\PurchasePOController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -202,12 +203,18 @@
     <Compile Include="Migrations\201305190320414_mig_contract.Designer.cs">
       <DependentUpon>201305190320414_mig_contract.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201305190327527_mig_po.cs" />
+    <Compile Include="Migrations\201305190327527_mig_po.Designer.cs">
+      <DependentUpon>201305190327527_mig_po.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ContextP.cs" />
     <Compile Include="Models\Contract.cs" />
     <Compile Include="Models\ContractItem.cs" />
+    <Compile Include="Models\POItem.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\PurchaseOrder.cs" />
     <Compile Include="Models\Vendor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -349,6 +356,11 @@
     <Content Include="Views\PurchaseContract\Create.cshtml" />
     <Content Include="Views\PurchaseContract\Edit.cshtml" />
     <Content Include="Views\PurchaseContract\Delete.cshtml" />
+    <Content Include="Views\PurchasePO\Index.cshtml" />
+    <Content Include="Views\PurchasePO\Details.cshtml" />
+    <Content Include="Views\PurchasePO\Create.cshtml" />
+    <Content Include="Views\PurchasePO\Edit.cshtml" />
+    <Content Include="Views\PurchasePO\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -365,6 +377,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201305190320414_mig_contract.resx">
       <DependentUpon>201305190320414_mig_contract.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305190327527_mig_po.resx">
+      <DependentUpon>201305190327527_mig_po.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
