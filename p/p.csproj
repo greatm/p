@@ -285,6 +285,7 @@
     <Content Include="Global.asax" />
     <None Include="Properties\PublishProfiles\p.esamadhan.net.pubxml" />
     <None Include="Scripts\jquery-2.0.0.intellisense.js" />
+    <Content Include="Images\es_logo.png" />
     <Content Include="Scripts\jquery-2.0.0.js" />
     <Content Include="Scripts\jquery-2.0.0.min.js" />
     <Content Include="Scripts\jquery-2.0.0.min.map" />

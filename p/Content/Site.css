@@ -1,6 +1,5 @@
 ﻿html {
     background-color: #e2e2e2;
-    /*background-color: #fff;*/
     margin: 0;
     padding: 0;
 }
@@ -38,12 +37,9 @@ header, footer, hgroup, nav, section {
 
 #accordionMenu {
     position: absolute;
-    /*float:left ;*/
     left: 0px;
     width: 200px;
-    top: 65px;
-    /*overflow:scroll;*/
-    /*margin-bottom: 120px;*/
+    top: 115px;
 }
 
 mark {
@@ -147,12 +143,19 @@ footer {
 }
 
     .site-title a, .site-title a:hover, .site-title a:active {
-        background: none;
+        /*background: none;*/
         color: #c8c8c8;
         outline: none;
         text-decoration: none;
     }
 
+a.site-logo {
+    background: url(../Images/es_logo.png) no-repeat top left;
+    display: block;
+    width: 300px;
+    height: 85px;
+    text-indent: -9999px; /* hides the link text */
+}
 
 /* login
 ----------------------------------------------------------*/

@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<p.Models.Product>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "master products";
 }
 
-<h2>Index</h2>
+<h2>Master Products</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -41,41 +41,42 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UoM)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RoL)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RoQ)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastPurchaseRate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Color)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Remarks)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UoM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoQ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastPurchaseRate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remarks)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
 
 </table>
