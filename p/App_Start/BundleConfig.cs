@@ -40,8 +40,9 @@ namespace p
 
             bundles.Add(new StyleBundle("~/bundles/css").Include(
                 "~/Content/site.css",
-                "~/Content/jquery.jgrowl.min.css",
-                "~/Content/themes/base/jquery-ui.css"
+                "~/Content/jquery.jgrowl.min.css"
+                //,
+                //"~/Content/themes/base/jquery-ui.css"
 
                 ));
 

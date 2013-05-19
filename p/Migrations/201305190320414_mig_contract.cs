@@ -2,7 +2,7 @@ namespace p.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class mig_contract : DbMigration
     {
         public override void Up()
@@ -24,7 +24,7 @@ namespace p.Migrations
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Vendors", t => new { t.Vendor_ID, t.Vendor_Version })
                 .Index(t => new { t.Vendor_ID, t.Vendor_Version });
-            
+
             CreateTable(
                 "dbo.ContractItems",
                 c => new
@@ -42,9 +42,9 @@ namespace p.Migrations
                 .ForeignKey("dbo.Contracts", t => t.Contract_ID)
                 .Index(t => t.ProductID)
                 .Index(t => t.Contract_ID);
-            
+
         }
-        
+
         public override void Down()
         {
             DropIndex("dbo.ContractItems", new[] { "Contract_ID" });
