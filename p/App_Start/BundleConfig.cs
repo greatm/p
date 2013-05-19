@@ -13,15 +13,18 @@ namespace p
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
 
+            "~/Scripts/modernizr-*",
             "~/Scripts/jquery-{version}.js",
             "~/Scripts/jquery-{version}.min.js",
             "~/Scripts/jquery-ui-{version}.js",
             "~/Scripts/jquery-ui-{version}.min.js",
             "~/Scripts/jquery.unobtrusive*",
             "~/Scripts/jquery.validate*",
-            "~/Scripts/modernizr-*"
+            "~/Scripts/jquery.jgrowl.min.js"
 
             ));
+
+            bundles.Add(new ScriptBundle("~/bundles/ajax").Include("~/Scripts/Microsoft*"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js"));
@@ -35,7 +38,12 @@ namespace p
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/bundles/css").Include(
+                "~/Content/site.css",
+                "~/Content/jquery.jgrowl.min.css",
+                "~/Content/themes/base/jquery-ui.css"
+
+                ));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
