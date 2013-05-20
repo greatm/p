@@ -207,6 +207,22 @@
     <Compile Include="Migrations\201305190327527_mig_po.Designer.cs">
       <DependentUpon>201305190327527_mig_po.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201305200438125_mig_vendor_annotation.cs" />
+    <Compile Include="Migrations\201305200438125_mig_vendor_annotation.Designer.cs">
+      <DependentUpon>201305200438125_mig_vendor_annotation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305200443112_mig_vendor_annotation1.cs" />
+    <Compile Include="Migrations\201305200443112_mig_vendor_annotation1.Designer.cs">
+      <DependentUpon>201305200443112_mig_vendor_annotation1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305200520584_mig_vendor_annotation2.cs" />
+    <Compile Include="Migrations\201305200520584_mig_vendor_annotation2.Designer.cs">
+      <DependentUpon>201305200520584_mig_vendor_annotation2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305200538457_mig_vendor_annotation3.cs" />
+    <Compile Include="Migrations\201305200538457_mig_vendor_annotation3.Designer.cs">
+      <DependentUpon>201305200538457_mig_vendor_annotation3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ContextP.cs" />
@@ -216,6 +232,7 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\PurchaseOrder.cs" />
     <Compile Include="Models\Vendor.cs" />
+    <Compile Include="Models\whatsnew.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -384,6 +401,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201305190327527_mig_po.resx">
       <DependentUpon>201305190327527_mig_po.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305200438125_mig_vendor_annotation.resx">
+      <DependentUpon>201305200438125_mig_vendor_annotation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305200443112_mig_vendor_annotation1.resx">
+      <DependentUpon>201305200443112_mig_vendor_annotation1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305200520584_mig_vendor_annotation2.resx">
+      <DependentUpon>201305200520584_mig_vendor_annotation2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305200538457_mig_vendor_annotation3.resx">
+      <DependentUpon>201305200538457_mig_vendor_annotation3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

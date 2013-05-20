@@ -1,4 +1,5 @@
 ﻿@*@using Microsoft.Web.Helpers;*@
+@model IEnumerable<whatsnew>
 @{
     ViewBag.Title = "about";
 }
@@ -21,11 +22,11 @@
 <aside>
     <h3>What's new </h3>
 
-    @* @foreach (var whats in Model)
+     @foreach (var whats in Model)
     { 
         <p>@whats.WorkTime
             <br />
             @whats.Work
         </p>
-    }*@
+    }
 </aside>

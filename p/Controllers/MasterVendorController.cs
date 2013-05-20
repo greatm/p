@@ -51,7 +51,7 @@ namespace p.Controllers
         {
             if (ModelState.IsValid)
             {
-                vendor.Version = 1;
+                //vendor.Version = 1;
                 db.Vendors.Add(vendor);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -63,9 +63,9 @@ namespace p.Controllers
         //
         // GET: /MasterVendor/Edit/5
 
-        public ActionResult Edit(int id = 0, int version =0)
+        public ActionResult Edit(int id = 0, int version = 0)
         {
-            Vendor vendor = db.Vendors.Find(id,version);
+            Vendor vendor = db.Vendors.Find(id, version);
             if (vendor == null)
             {
                 return HttpNotFound();

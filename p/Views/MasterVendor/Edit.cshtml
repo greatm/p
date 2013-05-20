@@ -1,12 +1,13 @@
 ﻿@model p.Models.Vendor
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "master vendor edit";
 }
 
-<h2>Edit</h2>
+<h2>Master Vendor Edit</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 

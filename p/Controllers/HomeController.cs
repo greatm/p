@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using p.Models;
 
 namespace p.Controllers
 {
@@ -19,11 +20,11 @@ namespace p.Controllers
         {
             ViewBag.Message = "us";
 
-            //bDBContext db = new bDBContext();
-            //var whats = db.whatsnews.OrderByDescending(t => t.WorkTime).ToList();
-            //return View(whats);
+            ContextP db = new ContextP();
+            var whats = db.whatsnews.OrderByDescending(t => t.WorkTime).ToList();
+            return View(whats);
 
-            return View();
+            //return View();
         }
 
         public ActionResult Contact()

@@ -9,9 +9,12 @@ namespace p.Models
 {
     public class Vendor
     {
-        [Key, Column(Order = 1)]
+        [Key, Column(Order = 0)]
+        [Display(AutoGenerateField= true )]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
-        [Key, Column(Order = 2)]
+        [Key, Column(Order = 1)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Version { get; set; }
 
         [Timestamp]
