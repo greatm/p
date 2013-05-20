@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<body>
+  <header>
+    <script type="text/javascript">m("u r in: home ");</script>
+    <div class="content-wrapper">
+      <div class="float-left">
+        <p class="site-title">
+          <a class="site-logo" href="/">p</a>
+        </p>
+      </div>
+      <div class="float-right">
+        <section id="login">
+
+          Hello, <a class="username" href="/Account/Manage" title="Manage">t7</a>!
+          <form action="/Account/LogOff" id="logoutForm" method="post">
+            <input name="__RequestVerificationToken" type="hidden" value="IEbL_dIPjo70KLLSLdr4VZhb5zaC6j3DkYOdcoL57_FVjvhHzgZJUgpV7HodK8Zjq0Hd-9MwGUKPO1jlHjEUyCpocluVTwSTaUBGYKMOfUI1" />
+            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+          </form>
+
+        </section>
+      </div>
+    </div>
+  </header>
+  <div id="accordionMenu">
+    <h3>Home</h3>
+    <div>
+      <p>
+        <a href="/">Home</a>
+      </p>
+      <p>
+        <a href="/Home/About">About</a>
+      </p>
+      <p>
+        <a href="/Home/Contact">Contact</a>
+      </p>
+    </div>
+    <h3>Master</h3>
+    <div>
+      <p>
+        <a href="/MasterVendor">Vendor</a>
+      </p>
+      <p>
+        <a href="/MasterProduct">Product</a>
+      </p>
+    </div>
+    <h3>Purchase</h3>
+    <div>
+      <p>
+        <a href="/PurchaseContract">Contract</a>
+      </p>
+      <p>
+        <a href="/PurchasePO">Purchase Order</a>
+      </p>
+    </div>
+  </div>
+  <div id="body">
+
+    <section class="featured">
+      <div class="content-wrapper">
+        <hgroup class="title">
+          <h1>home.</h1>
+          <h2>welcome</h2>
+        </hgroup>
+        <p>
+          p - a mvc web app
+        </p>
+      </div>
+    </section>
+
+    <section class="content-wrapper main-content clear-fix">
+
+      <h3>We suggest the following:</h3>
+      <ol class="round">
+        <li class="one">
+          <h5>Getting Started</h5>
+          check this site
+        </li>
+
+        <li class="two">
+          <h5>Tell us what u think</h5>
+          about this site
+        </li>
+      </ol>
+
+    </section>
+  </div>
+  <footer>
+    <div class="content-wrapper">
+      <div class="float-left">
+        <p>&copy; 2013 - great.</p>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+  <script>
+    $(function () {
+    $("#accordionMenu").accordion();
+    });
+  </script>
+
+</body>

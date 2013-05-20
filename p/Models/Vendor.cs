@@ -10,7 +10,7 @@ namespace p.Models
     public class Vendor
     {
         [Key, Column(Order = 0)]
-        [Display(AutoGenerateField= true )]
+        [Display(AutoGenerateField = true)]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         [Key, Column(Order = 1)]

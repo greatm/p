@@ -223,6 +223,10 @@
     <Compile Include="Migrations\201305200538457_mig_vendor_annotation3.Designer.cs">
       <DependentUpon>201305200538457_mig_vendor_annotation3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201305200607054_mig_whatsnew.cs" />
+    <Compile Include="Migrations\201305200607054_mig_whatsnew.Designer.cs">
+      <DependentUpon>201305200607054_mig_whatsnew.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ContextP.cs" />
@@ -361,7 +365,9 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\MasterVendor\Index.cshtml" />
     <Content Include="Views\MasterVendor\Details.cshtml" />
     <Content Include="Views\MasterVendor\Create.cshtml" />
@@ -413,6 +419,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201305200538457_mig_vendor_annotation3.resx">
       <DependentUpon>201305200538457_mig_vendor_annotation3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305200607054_mig_whatsnew.resx">
+      <DependentUpon>201305200607054_mig_whatsnew.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
