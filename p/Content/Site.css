@@ -5,7 +5,8 @@
 }
 
 body {
-    background-color: #fff;
+    /*background-color: #fff;*/
+    background-color: aliceblue;
     border-top: solid 10px #000;
     color: #333;
     font-size: .85em;
@@ -39,11 +40,16 @@ header, footer, hgroup, nav, section {
     position: absolute;
     left: 0px;
     width: 200px;
-    top: 115px;
+    top: 105px;
 }
-#accordionMenu>div{background:yellow}
 
+    #accordionMenu > h3 {
+        background: darkseagreen;
+    }
 
+    #accordionMenu > div {
+        background: lightgreen;
+    }
 
 mark {
     background-color: #a6dbed;
@@ -108,7 +114,8 @@ h5, h6 {
 }
 
 #body {
-    background-color: #efeeef;
+    /*background-color: #efeeef;*/
+    background-color: lightyellow;
     clear: both;
     padding-bottom: 35px;
     margin-left: 200px;
@@ -131,9 +138,10 @@ header .content-wrapper {
 
 footer {
     clear: both;
-    background-color: #e2e2e2;
+    /*background-color: #e2e2e2;*/
+    background-color:tomato;
     font-size: .8em;
-    height: 100px;
+    height: 30px;
 }
 
 

@@ -10,11 +10,11 @@ function m(msg) {
 }
 
 $(function () {
-      $("#accordionMenu").accordion({
+    $("#accordionMenu").accordion({
         activate: function (event, ui) {
             accordionMenuIndex = $("#accordionMenu").accordion("option", "active");
         }
     });
-      $("#accordionMenu").accordion({ active: accordionMenuIndex });
+    $("#accordionMenu").accordion({ active: accordionMenuIndex });
     //$("#accordionMenu").accordion("option", "active", accordionMenuIndex);
 });
