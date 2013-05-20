@@ -1,10 +1,10 @@
 ﻿@model p.Models.Product
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "master product edit";
 }
 
-<h2>Edit</h2>
+<h2>Master Product Edit</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -98,5 +98,5 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    @*@Scripts.Render("~/bundles/jqueryval")*@
 }

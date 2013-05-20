@@ -82,8 +82,17 @@ namespace p.Controllers
         {
             if (ModelState.IsValid)
             {
+                db.Configuration.ValidateOnSaveEnabled = true;
                 db.Entry(vendor).State = EntityState.Modified;
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (OptimisticConcurrencyException)
+                {
+                    //db.Entry(vendor) .Refresh(RefreshMode.ClientWins, db.Articles);
+                    db.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
             return View(vendor);

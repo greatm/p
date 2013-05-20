@@ -26,7 +26,7 @@ namespace p.Models
                 p => p.WorkTime,
 
 
-                   new whatsnew { WorkTime = new DateTime(2013, 4, 26, 10, 10, 0), Work = "add logo" }
+                   new whatsnew { WorkTime = new DateTime(2013, 5, 20, 10, 10, 0), Work = "add logo" }
                 );
         }
     }
