@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using p.Models;
+using System.Data.Entity.Infrastructure;
 
 namespace p.Controllers
 {
@@ -82,16 +83,22 @@ namespace p.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Configuration.ValidateOnSaveEnabled = true;
+                //db.Configuration.ValidateOnSaveEnabled = true;
                 db.Entry(vendor).State = EntityState.Modified;
+                //db.SaveChanges();
                 try
                 {
                     db.SaveChanges();
                 }
-                catch (OptimisticConcurrencyException)
+                catch (DbUpdateConcurrencyException)
                 {
-                    //db.Entry(vendor) .Refresh(RefreshMode.ClientWins, db.Articles);
-                    db.SaveChanges();
+                    if (ModelState.IsValid)
+                    {
+                        vendor.Version += 1;
+                        db.Vendors.Add(vendor);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
                 }
                 return RedirectToAction("Index");
             }

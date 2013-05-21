@@ -82,9 +82,20 @@ namespace p.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(product).State = EntityState.Modified;
-                db.SaveChanges();
+                try
+                { db.SaveChanges(); }
+                catch (DBConcurrencyException)
+                {
+                    if (ModelState.IsValid)
+                    {
+                        //db.Products.Add(product);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                }
                 return RedirectToAction("Index");
             }
+
             return View(product);
         }
 
