@@ -19,8 +19,9 @@ namespace p
             "~/Scripts/jquery-ui-{version}.js",
             "~/Scripts/jquery-ui-{version}.min.js",
             "~/Scripts/jquery.unobtrusive*",
-            "~/Scripts/jquery.validate*",
-            "~/Scripts/jquery.jgrowl.min.js"
+            "~/Scripts/jquery.validate*"
+                //,
+                //"~/Scripts/jquery.jgrowl.min.js"
 
             ));
 
@@ -39,8 +40,9 @@ namespace p
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/bundles/css").Include(
-                "~/Content/site.css",
-                "~/Content/jquery.jgrowl.min.css"
+                "~/Content/site.css"
+                //,
+                //"~/Content/jquery.jgrowl.min.css"
                 //,
                 //"~/Content/themes/base/jquery-ui.css"
 

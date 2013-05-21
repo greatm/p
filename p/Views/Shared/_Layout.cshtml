@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="~/Content/themes/base/jquery-ui.css" type="text/css" />
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     @Scripts.Render("~/bundles/jquery")
-    @*<link rel="stylesheet" href="~/Content/jquery.jgrowl.min.css" />
-    <script src="~/Scripts/jquery.jgrowl.min.js"></script>*@
+    @*<link rel="stylesheet" href="~/Content/jquery.jgrowl.min.css" />*@
+    @*<script src="~/Scripts/jquery.jgrowl.min.js"></script>*@
     @Scripts.Render("~/bundles/ajax")
     <script src="~/Scripts/MyScript.js"></script>
 </head>
@@ -40,6 +40,7 @@
         <div>
             <p>@Html.ActionLink("Vendor", "Index", "MasterVendor")</p>
             <p>@Html.ActionLink("Product", "Index", "MasterProduct")</p>
+            <p>@Html.ActionLink("Store", "Index", "MasterStore")</p>
         </div>
         <h3>Purchase</h3>
         <div>
@@ -61,14 +62,12 @@
         </div>
     </footer>
 
-    @*@Scripts.Render("~/bundles/jquery")*@
-    @RenderSection("scripts", required: false)
-
-    <script>
+    @*<script>
         $(function () {
             $("#accordionMenu").accordion();
         });
-    </script>
+    </script>*@
+    @RenderSection("scripts", required: false)
 
 </body>
 </html>

@@ -1,20 +1,15 @@
 ﻿
-var accordionMenuIndex = 0;
-
-function GetAccordionMenuIndex() {
-    accordionMenuIndex = $(".selector").accordion("option", "active");
-}
-
 function m(msg) {
     //$.jGrowl(msg, { pool: 2 });
 }
 
 $(function () {
+    var accordionMenuIndex = parseInt(sessionStorage.getItem("accordionMenuIndex"));
     $("#accordionMenu").accordion({
+        active: accordionMenuIndex,
         activate: function (event, ui) {
-            accordionMenuIndex = $("#accordionMenu").accordion("option", "active");
+            var accordionMenuIndex = $("#accordionMenu").accordion("option", "active");
+            sessionStorage.setItem("accordionMenuIndex", accordionMenuIndex);
         }
     });
-    $("#accordionMenu").accordion({ active: accordionMenuIndex });
-    //$("#accordionMenu").accordion("option", "active", accordionMenuIndex);
 });

@@ -17,6 +17,7 @@ namespace p.Models
         public DateTime Date { get; set; }
         public Vendor Vendor { get; set; }
         public int VendorID { get; set; }
+        public Store Store { get; set; }
         public int StoreID { get; set; }
         public string Remarks { get; set; }
         public IList<POItem> POItems { get; set; }

@@ -189,6 +189,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MasterProductController.cs" />
+    <Compile Include="Controllers\MasterStoreController.cs" />
     <Compile Include="Controllers\MasterVendorController.cs" />
     <Compile Include="Controllers\PurchaseContractController.cs" />
     <Compile Include="Controllers\PurchasePOController.cs" />
@@ -200,6 +201,10 @@
     <Compile Include="Migrations\201305200958243_mig_start.Designer.cs">
       <DependentUpon>201305200958243_mig_start.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201305211222307_mig_store.cs" />
+    <Compile Include="Migrations\201305211222307_mig_store.Designer.cs">
+      <DependentUpon>201305211222307_mig_store.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ContextP.cs" />
@@ -208,6 +213,7 @@
     <Compile Include="Models\POItem.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\PurchaseOrder.cs" />
+    <Compile Include="Models\Store.cs" />
     <Compile Include="Models\Vendor.cs" />
     <Compile Include="Models\whatsnew.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -363,6 +369,11 @@
     <Content Include="Views\PurchasePO\Delete.cshtml" />
     <Content Include="Views\PurchaseContract\ContractItemRow.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Collection.cshtml" />
+    <Content Include="Views\MasterStore\Index.cshtml" />
+    <Content Include="Views\MasterStore\Details.cshtml" />
+    <Content Include="Views\MasterStore\Create.cshtml" />
+    <Content Include="Views\MasterStore\Edit.cshtml" />
+    <Content Include="Views\MasterStore\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -373,6 +384,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201305200958243_mig_start.resx">
       <DependentUpon>201305200958243_mig_start.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305211222307_mig_store.resx">
+      <DependentUpon>201305211222307_mig_store.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

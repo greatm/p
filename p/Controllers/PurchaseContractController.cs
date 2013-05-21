@@ -81,10 +81,10 @@ namespace p.Controllers
         }
         public ActionResult ContractItemRow()
         {
-            CreateProductsList(new ContractItem ());
+            CreateProductsList(new ContractItem());
             return PartialView();
         }
-      
+
         //
         // GET: /PurchaseContract/Edit/5
 

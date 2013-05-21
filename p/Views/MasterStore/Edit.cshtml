@@ -1,43 +1,34 @@
-﻿@model p.Models.PurchaseOrder
+﻿@model p.Models.Store
 
 @{
-    ViewBag.Title = "purchase order edit";
+    ViewBag.Title = "Edit";
 }
 
-<h2>Purchase Order Edit</h2>
+<h2>Edit</h2>
 
-@using (Html.BeginForm())
-{
+@using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>PurchaseOrder</legend>
+        <legend>Store</legend>
 
         @Html.HiddenFor(model => model.ID)
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Date)
+            @Html.LabelFor(model => model.Name)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Date)
-            @Html.ValidationMessageFor(model => model.Date)
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.VendorID)
+            @Html.LabelFor(model => model.Description)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.VendorID)
-            @Html.ValidationMessageFor(model => model.VendorID)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.StoreID)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.StoreID)
-            @Html.ValidationMessageFor(model => model.StoreID)
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
         </div>
 
         <div class="editor-label">

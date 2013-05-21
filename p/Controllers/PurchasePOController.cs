@@ -11,8 +11,11 @@ namespace p.Controllers
 {
     public class PurchasePOController : Controller
     {
+        #region var
         private ContextP db = new ContextP();
+        #endregion
 
+        #region action
         //
         // GET: /PurchasePO/
 
@@ -39,7 +42,24 @@ namespace p.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            PurchaseOrder newPO = new PurchaseOrder { Date = DateTime.Today, POItems = new List<POItem>() };
+            POItem poitem = null;
+            foreach (Product prd in db.Products)
+            {
+                if (prd.RoL > 5)
+                {
+                    poitem = new POItem { Product = prd, ProductID = prd.ID, Rate = prd.LastPurchaseRate, Qty = prd.RoQ, Amount = prd.LastPurchaseRate * prd.RoQ };
+                    CreateProductsList(poitem);
+                    newPO.POItems.Add(poitem);
+                }
+            }
+            if (newPO.POItems.Count < 1)
+            {
+                newPO.POItems.Add(new POItem());
+            }
+            CreateVendorsList(newPO);
+            CreateStoresList(newPO);
+            return View(newPO);
         }
 
         //
@@ -119,5 +139,31 @@ namespace p.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
+        #endregion
+
+        #region function
+        private void CreateVendorsList(PurchaseOrder workPO)
+        {
+            var vendors = db.Vendors;
+            List<object> newList = new List<object>();
+            foreach (var vendor in vendors)
+                newList.Add(new
+                {
+                    Id = vendor.ID,
+                    Name = vendor.Name + " : " + vendor.Person
+                });
+            this.ViewData["VendorID"] = new SelectList(newList, "Id", "Name", workPO.VendorID);
+
+        }
+        private void CreateStoresList(PurchaseOrder workPO)
+        {
+            this.ViewData["ProductID"] = new SelectList(db.Products, "Id", "Name", workPO.StoreID);
+        }
+        private void CreateProductsList(POItem poitem)
+        {
+            this.ViewData["ProductID"] = new SelectList(db.Products, "Id", "Name", poitem.ProductID);
+        }
+        #endregion
+
     }
 }
