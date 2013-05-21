@@ -1,7 +1,11 @@
-﻿html {
-    background-color: #e2e2e2;
+﻿html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
+}
+
+html {
+    background-color: #e2e2e2;
 }
 
 body {
@@ -11,8 +15,6 @@ body {
     color: #333;
     font-size: .85em;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
-    margin: 0;
-    padding: 0;
 }
 
 a {
@@ -41,6 +43,7 @@ header, footer, hgroup, nav, section {
     left: 0px;
     width: 200px;
     top: 105px;
+    height: 100%;
 }
 
     #accordionMenu > h3 {
@@ -76,7 +79,8 @@ mark {
 h1, h2, h3,
 h4, h5, h6 {
     color: #000;
-    margin-bottom: 0;
+    margin: 0;
+    /*margin-bottom: 0;*/
     padding-bottom: 0;
 }
 
@@ -137,11 +141,13 @@ header .content-wrapper {
 }
 
 footer {
-    clear: both;
+    position: absolute;
+    /*clear: both;*/
     /*background-color: #e2e2e2;*/
     background-color: tomato;
     font-size: .8em;
     height: 30px;
+    width:100%;
 }
 
 
