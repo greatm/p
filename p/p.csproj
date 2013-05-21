@@ -41,6 +41,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BeginCollectionItem">
+      <HintPath>..\packages\BeginCollectionItem.1.2.1.0\lib\net35\BeginCollectionItem.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -358,6 +361,8 @@
     <Content Include="Views\PurchasePO\Create.cshtml" />
     <Content Include="Views\PurchasePO\Edit.cshtml" />
     <Content Include="Views\PurchasePO\Delete.cshtml" />
+    <Content Include="Views\PurchaseContract\ContractItemRow.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Collection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

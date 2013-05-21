@@ -1,50 +1,101 @@
 ﻿@model p.Models.Contract
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "purchase contract details";
 }
 
-<h2>Details</h2>
+<h2>Purchase Contract Details</h2>
 
 <fieldset>
     <legend>Contract</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.StartDate)
+        @Html.DisplayNameFor(model => model.StartDate)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.StartDate)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.EndDate)
+        @Html.DisplayNameFor(model => model.EndDate)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.EndDate)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.VendorID)
+        @Html.DisplayNameFor(model => model.Vendor)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.VendorID)
+        @Html.DisplayFor(model => model.Vendor.Name)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Recurrence)
+        @Html.DisplayNameFor(model => model.Recurrence)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Recurrence)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Remarks)
+        @Html.DisplayNameFor(model => model.Remarks)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Remarks)
     </div>
 </fieldset>
+<fieldset>
+    <legend>ContractItems</legend>
+
+    <style type="text/css">
+        input {
+            border: 1px solid #e2e2e2;
+            background: #fff;
+            color: #333;
+            font-size: 1.2em;
+            margin: 5px 0 6px 0;
+            padding: 5px;
+            width: 150px;
+        }
+    </style>
+    @if (Model == null || Model.ContractItems == null || Model.ContractItems.Count == 0)
+    {
+        <p>None.</p>
+    }
+    <table id="itemEditor">
+        <tr>
+            <th></th>
+            <th style="width: 100px">Product</th>
+            <th style="width: 100px">Rate</th>
+            <th style="width: 100px">Quantity</th>
+            <th style="width: 100px">Amount</th>
+            <th style="width: 100px"></th>
+        </tr>
+
+        @if (Model != null && Model.ContractItems != null)
+        {
+            foreach (ContractItem contractItem in Model.ContractItems)
+            {
+                Html.RenderPartial("ContractItemRow", contractItem);
+            }
+        }
+    </table>
+
+    <a id="addAnother" href="#">Add another</a>
+    <script type="text/javascript">
+        $(function () {
+            $("#itemEditor").sortable();
+            $("#addAnother").click(function () {
+                $.get('/PurchaseOrder/POItemEntryRow', function (template) {
+                    $("#itemEditor").append(template);
+                });
+            });
+        });
+    </script>
+
+</fieldset>
+
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

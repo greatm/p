@@ -11,8 +11,11 @@ namespace p.Controllers
 {
     public class PurchaseContractController : Controller
     {
+        #region var
         private ContextP db = new ContextP();
+        #endregion
 
+        #region action
         //
         // GET: /PurchaseContract/
 
@@ -39,7 +42,23 @@ namespace p.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            Contract newContract = new Contract { StartDate = DateTime.Today, EndDate = DateTime.Today.AddYears(1), ContractItems = new List<ContractItem>() };
+            ContractItem contractItem = null;
+            foreach (Product prd in db.Products)
+            {
+                //if (prd.RoL > 5)
+                //{
+                contractItem = new ContractItem { Product = prd, ProductID = prd.ID, Rate = prd.LastPurchaseRate, Qty = prd.RoQ, Amount = prd.LastPurchaseRate * prd.RoQ };
+                CreateProductsList(contractItem);
+                newContract.ContractItems.Add(contractItem);
+                //}
+            }
+            if (newContract.ContractItems.Count < 1)
+            {
+                newContract.ContractItems.Add(new ContractItem());
+            }
+            CreateVendorsList(newContract);
+            return View(newContract);
         }
 
         //
@@ -56,9 +75,16 @@ namespace p.Controllers
                 return RedirectToAction("Index");
             }
 
+            CreateVendorsList(contract);
+            foreach (ContractItem contractItem in contract.ContractItems) CreateProductsList(contractItem);
             return View(contract);
         }
-
+        public ActionResult ContractItemRow()
+        {
+            CreateProductsList(new ContractItem ());
+            return PartialView();
+        }
+      
         //
         // GET: /PurchaseContract/Edit/5
 
@@ -119,5 +145,25 @@ namespace p.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
+        #endregion
+
+        #region function
+        private void CreateVendorsList(Contract contract)
+        {
+            var vendors = db.Vendors;
+            List<object> newList = new List<object>();
+            foreach (var vendor in vendors)
+                newList.Add(new
+                {
+                    Id = vendor.ID,
+                    Name = vendor.Name + " : " + vendor.Person
+                });
+            this.ViewData["VendorID"] = new SelectList(newList, "Id", "Name", contract.VendorID);
+        }
+        private void CreateProductsList(ContractItem contractItem)
+        {
+            this.ViewData["ProductID"] = new SelectList(db.Products, "Id", "Name", contractItem.ProductID);
+        }
+        #endregion
     }
 }

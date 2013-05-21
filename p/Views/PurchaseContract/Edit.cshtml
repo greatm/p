@@ -1,12 +1,13 @@
 ﻿@model p.Models.Contract
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "master contract edit";
 }
 
-<h2>Edit</h2>
+<h2>Master Contract Edit</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
@@ -55,10 +56,62 @@
             @Html.ValidationMessageFor(model => model.Remarks)
         </div>
 
-        <p>
-            <input type="submit" value="Save" />
-        </p>
     </fieldset>
+   
+    <fieldset>
+        <legend>ContractItems</legend>
+
+        <style type="text/css">
+            input {
+                border: 1px solid #e2e2e2;
+                background: #fff;
+                color: #333;
+                font-size: 1.2em;
+                margin: 5px 0 6px 0;
+                padding: 5px;
+                width: 150px;
+            }
+        </style>
+        <table id="itemEditor">
+            <tr>
+                <th></th>
+                <th style="width: 100px">Product</th>
+                <th style="width: 100px">Rate</th>
+                <th style="width: 100px">Quantity</th>
+                <th style="width: 100px">Amount</th>
+                <th style="width: 100px"></th>
+            </tr>
+
+           @if (Model == null || Model.ContractItems == null || Model.ContractItems.Count == 0)
+        {
+            <p>None.</p>
+        }
+         @if (Model != null && Model.ContractItems != null)
+            {
+                foreach (ContractItem contractItem in Model.ContractItems)
+                {
+                    Html.RenderPartial("ContractItemRow", contractItem);
+                }
+            }
+        </table>
+
+        <a id="addAnother" href="#">Add another</a>
+   
+             <script type="text/javascript">
+            $(function () {
+                $("#itemEditor").sortable();
+                $("#addAnother").click(function () {
+                    $.get('/PurchaseContract/ContractItemRow', function (template) {
+                        $("#itemEditor").append(template);
+                    });
+                });
+            });
+        </script>
+
+    </fieldset>
+    <p>
+        <input type="submit" value="Save" />
+    </p>
 }
 
 <div>
@@ -66,5 +119,5 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    @*@Scripts.Render("~/bundles/jqueryval")*@
 }
