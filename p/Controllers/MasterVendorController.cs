@@ -52,7 +52,9 @@ namespace p.Controllers
         {
             if (ModelState.IsValid)
             {
-                //vendor.Version = 1;
+                int iId = db.Vendors.Max(t => t.ID);
+                vendor.ID = iId + 1;
+                vendor.Version = 1;
                 db.Vendors.Add(vendor);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -83,23 +85,34 @@ namespace p.Controllers
         {
             if (ModelState.IsValid)
             {
-                //db.Configuration.ValidateOnSaveEnabled = true;
                 db.Entry(vendor).State = EntityState.Modified;
-                //db.SaveChanges();
                 try
                 {
                     db.SaveChanges();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (TryUpdateModel(vendor, null, null, new[] { "Id", "Version" }))
-                        //if (ModelState.IsValid)
-                        //{
-                        //    //vendor.Version += 1;
-                        //    db.Vendors.Add(vendor);
-                        db.SaveChanges();
-                    //    return RedirectToAction("Index");
-                    //}
+                    Vendor vendorV = new Vendor
+                    {
+                        ID = vendor.ID,
+                        Version = vendor.Version + 1,
+                        //Timestamp = vendor.Timestamp,
+                        Name = vendor.Name,
+                        Person = vendor.Person,
+                        Address = vendor.Address,
+                        City = vendor.City,
+                        State = vendor.State,
+                        PostalCode = vendor.PostalCode,
+                        Country = vendor.Country,
+                        Mobile = vendor.Mobile,
+                        Phone = vendor.Phone,
+                        eMail = vendor.eMail,
+                        WebSite = vendor.WebSite,
+                        Remarks = vendor.Remarks
+                    };
+                    //vendor.Version += 1;
+                    db.Vendors.Add(vendorV);
+                    db.SaveChanges();
                 }
                 return RedirectToAction("Index");
             }

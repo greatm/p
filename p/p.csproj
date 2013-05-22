@@ -219,6 +219,10 @@
     <Compile Include="Migrations\201305220549098_mig_vendor_annot.Designer.cs">
       <DependentUpon>201305220549098_mig_vendor_annot.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201305221206035_mig_vendor_annot2.cs" />
+    <Compile Include="Migrations\201305221206035_mig_vendor_annot2.Designer.cs">
+      <DependentUpon>201305221206035_mig_vendor_annot2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ContextP.cs" />
@@ -416,6 +420,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201305220549098_mig_vendor_annot.resx">
       <DependentUpon>201305220549098_mig_vendor_annot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305221206035_mig_vendor_annot2.resx">
+      <DependentUpon>201305221206035_mig_vendor_annot2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

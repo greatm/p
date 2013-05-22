@@ -14,11 +14,11 @@ namespace p.Models
 
         public DbSet<Vendor> Vendors { get; set; }
         public DbSet<Product> Products { get; set; }
-  public DbSet<Store> Stores { get; set; }
+        public DbSet<Store> Stores { get; set; }
 
         public DbSet<Contract> Contracts { get; set; }
         public DbSet<PurchaseOrder> PurchaseOrders { get; set; }
-      
+
         public DbSet<GRN> GRNs { get; set; }
     }
     public static class Seeder
@@ -29,7 +29,8 @@ namespace p.Models
                 p => p.WorkTime,
 
 
-                   //new whatsnew { WorkTime = new DateTime(2013, 5, 22, 15, 00, 0), Work = "footer area color – blue" },
+                   //new whatsnew { WorkTime = new DateTime(2013, 5, 22, 16, 00, 0), Work = "create master – product" },
+                   new whatsnew { WorkTime = new DateTime(2013, 5, 22, 16, 00, 0), Work = "create master – product" },
                    new whatsnew { WorkTime = new DateTime(2013, 5, 22, 15, 00, 0), Work = "footer area color – blue" },
                    new whatsnew { WorkTime = new DateTime(2013, 5, 22, 14, 00, 0), Work = "body area color – yellow" },
                    new whatsnew { WorkTime = new DateTime(2013, 5, 22, 13, 00, 0), Work = "menu area color – blue" },
