@@ -10,90 +10,90 @@
     <legend>Vendor</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Name)
+        @Html.DisplayNameFor(model => model.Name)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Name)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Person)
+        @Html.DisplayNameFor(model => model.Person)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Person)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Address)
+        @Html.DisplayNameFor(model => model.Address)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Address)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.City)
+        @Html.DisplayNameFor(model => model.City)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.City)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.State)
+        @Html.DisplayNameFor(model => model.State)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.State)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.PostalCode)
+        @Html.DisplayNameFor(model => model.PostalCode)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.PostalCode)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Country)
+        @Html.DisplayNameFor(model => model.Country)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Country)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Mobile)
+        @Html.DisplayNameFor(model => model.Mobile)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Mobile)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Phone)
+        @Html.DisplayNameFor(model => model.Phone)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Phone)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.eMail)
+        @Html.DisplayNameFor(model => model.eMail)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.eMail)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.WebSite)
+        @Html.DisplayNameFor(model => model.WebSite)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.WebSite)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Remarks)
+        @Html.DisplayNameFor(model => model.Remarks)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Remarks)
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID, version = Model.Version }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

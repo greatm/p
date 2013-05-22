@@ -25,9 +25,9 @@ namespace p.Controllers
         //
         // GET: /MasterVendor/Details/5
 
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(int id = 0, int version = 0)
         {
-            Vendor vendor = db.Vendors.Find(id);
+            Vendor vendor = db.Vendors.Find(id, version);
             if (vendor == null)
             {
                 return HttpNotFound();
