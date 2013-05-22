@@ -45,6 +45,9 @@
       <HintPath>..\packages\BeginCollectionItem.1.2.1.0\lib\net35\BeginCollectionItem.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Mvc.Mailer">
+      <HintPath>..\packages\MvcMailer.4.5\lib\45\Mvc.Mailer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -198,6 +201,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mailers\IUserMailer.cs" />
+    <Compile Include="Mailers\UserMailer.cs" />
     <Compile Include="Migrations\201305200958243_mig_start.cs" />
     <Compile Include="Migrations\201305200958243_mig_start.Designer.cs">
       <DependentUpon>201305200958243_mig_start.cs</DependentUpon>
@@ -390,6 +395,8 @@
     <Content Include="Views\PurchaseGrn\Create.cshtml" />
     <Content Include="Views\PurchaseGrn\Edit.cshtml" />
     <Content Include="Views\PurchaseGrn\Delete.cshtml" />
+    <Content Include="Views\UserMailer\_Layout.cshtml" />
+    <Content Include="Views\UserMailer\Welcome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
