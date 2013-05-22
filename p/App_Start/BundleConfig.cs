@@ -13,15 +13,13 @@ namespace p
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
 
-            "~/Scripts/modernizr-*",
             "~/Scripts/jquery-{version}.js",
             "~/Scripts/jquery-{version}.min.js",
             "~/Scripts/jquery-ui-{version}.js",
             "~/Scripts/jquery-ui-{version}.min.js",
             "~/Scripts/jquery.unobtrusive*",
-            "~/Scripts/jquery.validate*"
-                //,
-                //"~/Scripts/jquery.jgrowl.min.js"
+            "~/Scripts/jquery.validate*",
+            "~/Scripts/modernizr-*"
 
             ));
 
@@ -41,8 +39,6 @@ namespace p
 
             bundles.Add(new StyleBundle("~/bundles/css").Include(
                 "~/Content/site.css"
-                //,
-                //"~/Content/jquery.jgrowl.min.css"
                 //,
                 //"~/Content/themes/base/jquery-ui.css"
 

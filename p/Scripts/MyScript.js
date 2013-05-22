@@ -1,6 +1,6 @@
 ﻿
 function m(msg) {
-    //$.jGrowl(msg, { pool: 2 });
+    $.jGrowl(msg, { pool: 2 });
 }
 
 $(function () {

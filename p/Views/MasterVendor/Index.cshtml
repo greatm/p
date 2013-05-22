@@ -17,13 +17,13 @@
         <th>
             @Html.DisplayNameFor(model => model.Person)
         </th>
-        <th>
+        @*  <th>
             @Html.DisplayNameFor(model => model.Address)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.City)
         </th>
-        <th>
+        @* <th>
             @Html.DisplayNameFor(model => model.State)
         </th>
         <th>
@@ -31,7 +31,7 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Country)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Mobile)
         </th>
@@ -44,9 +44,9 @@
         <th>
             @Html.DisplayNameFor(model => model.WebSite)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Remarks)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -59,13 +59,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Person)
             </td>
-            <td>
+            @*  <td>
                 @Html.DisplayFor(modelItem => item.Address)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.City)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.State)
             </td>
             <td>
@@ -73,7 +73,7 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Country)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Mobile)
             </td>
@@ -86,9 +86,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.WebSite)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Remarks)
-            </td>
+            </td>*@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.ID, version = item.Version }) |
             @Html.ActionLink("Details", "Details", new { id = item.ID, version = item.Version }) |

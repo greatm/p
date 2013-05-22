@@ -147,7 +147,7 @@ footer {
     background-color: tomato;
     font-size: .8em;
     height: 30px;
-    width:100%;
+    width: 100%;
 }
 
 
@@ -567,6 +567,7 @@ table {
     border-spacing: 0;
     margin-top: 0.75em;
     border: 0 none;
+    width: 100%;
 }
 
 th {

@@ -92,13 +92,14 @@ namespace p.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (ModelState.IsValid)
-                    {
-                        vendor.Version += 1;
-                        db.Vendors.Add(vendor);
+                    if (TryUpdateModel(vendor, null, null, new[] { "Id", "Version" }))
+                        //if (ModelState.IsValid)
+                        //{
+                        //    //vendor.Version += 1;
+                        //    db.Vendors.Add(vendor);
                         db.SaveChanges();
-                        return RedirectToAction("Index");
-                    }
+                    //    return RedirectToAction("Index");
+                    //}
                 }
                 return RedirectToAction("Index");
             }

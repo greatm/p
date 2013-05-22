@@ -19,6 +19,7 @@ namespace p.Models
 
         [Timestamp]
         public Byte[] Timestamp { get; set; }
+        [Required]
         public string Name { get; set; }
         public string Person { get; set; }
         public string Address { get; set; }
