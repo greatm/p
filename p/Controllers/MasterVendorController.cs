@@ -19,7 +19,29 @@ namespace p.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Vendors.ToList());
+            var lastVersionVendors = from n in db.Vendors
+                    group n by n.ID into g
+                    select g.OrderByDescending(t => t.Version).FirstOrDefault();
+
+            //var results = (from rec in db.Vendors
+            //               group rec by rec.ID into grp
+            //               select new
+            //               {
+            //                   ID = grp.Key,
+            //                   Version = grp.OrderByDescending(r => r.Version).Select(x => x.Version).FirstOrDefault()
+            //                   //,
+            //                   //Data = grp.OrderByDescending(r => r.Version).Select(x => x.Data).FirstOrDefault()
+            //               }
+            //);
+            //var vendors= db.Vendors
+            //                .GroupBy(t=>t.ID)
+            //                .Select(t=>new {})
+            //                ;
+            //var vvendors= foreach (var vv in vendors)
+            //{
+            //vv.v
+            //};
+            return View(lastVersionVendors.ToList());
         }
 
         //
@@ -52,8 +74,13 @@ namespace p.Controllers
         {
             if (ModelState.IsValid)
             {
-                int iId = db.Vendors.Max(t => t.ID);
-                vendor.ID = iId + 1;
+                int iId = 1;
+                try
+                {
+                    iId = db.Vendors.Max(t => t.ID) + 1;
+                }
+                catch { }
+                vendor.ID = iId;
                 vendor.Version = 1;
                 db.Vendors.Add(vendor);
                 db.SaveChanges();
@@ -85,18 +112,14 @@ namespace p.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(vendor).State = EntityState.Modified;
+                //db.Entry(vendor).State = EntityState.Modified;
                 try
-                {
-                    db.SaveChanges();
-                }
-                catch (DbUpdateConcurrencyException)
                 {
                     Vendor vendorV = new Vendor
                     {
                         ID = vendor.ID,
                         Version = vendor.Version + 1,
-                        //Timestamp = vendor.Timestamp,
+                        Timestamp = vendor.Timestamp,
                         Name = vendor.Name,
                         Person = vendor.Person,
                         Address = vendor.Address,
@@ -110,7 +133,29 @@ namespace p.Controllers
                         WebSite = vendor.WebSite,
                         Remarks = vendor.Remarks
                     };
-                    //vendor.Version += 1;
+                    db.Vendors.Add(vendorV);
+                    db.SaveChanges();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    Vendor vendorV = new Vendor
+                    {
+                        ID = vendor.ID,
+                        Version = vendor.Version + 1,
+                        Timestamp = vendor.Timestamp,
+                        Name = vendor.Name,
+                        Person = vendor.Person,
+                        Address = vendor.Address,
+                        City = vendor.City,
+                        State = vendor.State,
+                        PostalCode = vendor.PostalCode,
+                        Country = vendor.Country,
+                        Mobile = vendor.Mobile,
+                        Phone = vendor.Phone,
+                        eMail = vendor.eMail,
+                        WebSite = vendor.WebSite,
+                        Remarks = vendor.Remarks
+                    };
                     db.Vendors.Add(vendorV);
                     db.SaveChanges();
                 }

@@ -29,10 +29,10 @@ namespace p.Migrations
                 "dbo.Vendors",
                 c => new
                     {
-                        ID = c.Int(nullable: false, identity: true),
+                        ID = c.Int(nullable: false),
                         Version = c.Int(nullable: false),
                         Timestamp = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
-                        Name = c.String(),
+                        Name = c.String(nullable: false),
                         Person = c.String(),
                         Address = c.String(),
                         City = c.String(),
@@ -62,6 +62,18 @@ namespace p.Migrations
                         LastPurchaseRate = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Color = c.String(),
                         Image = c.Binary(),
+                        Remarks = c.String(),
+                    })
+                .PrimaryKey(t => t.ID);
+
+            CreateTable(
+                "dbo.Stores",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        Timestamp = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                        Name = c.String(nullable: false),
+                        Description = c.String(),
                         Remarks = c.String(),
                     })
                 .PrimaryKey(t => t.ID);
@@ -117,7 +129,9 @@ namespace p.Migrations
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Vendors", t => new { t.Vendor_ID, t.Vendor_Version })
-                .Index(t => new { t.Vendor_ID, t.Vendor_Version });
+                .ForeignKey("dbo.Stores", t => t.StoreID, cascadeDelete: true)
+                .Index(t => new { t.Vendor_ID, t.Vendor_Version })
+                .Index(t => t.StoreID);
 
             CreateTable(
                 "dbo.POItems",
@@ -137,26 +151,44 @@ namespace p.Migrations
                 .Index(t => t.ProductID)
                 .Index(t => t.PurchaseOrder_ID);
 
+            CreateTable(
+                "dbo.GRNs",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        Timestamp = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                        Date = c.DateTime(nullable: false),
+                        POID = c.Int(nullable: false),
+                        VendorID = c.Int(nullable: false),
+                        VendorInvoice = c.String(),
+                        Remarks = c.String(),
+                    })
+                .PrimaryKey(t => t.ID);
+
         }
 
         public override void Down()
         {
             DropIndex("dbo.POItems", new[] { "PurchaseOrder_ID" });
             DropIndex("dbo.POItems", new[] { "ProductID" });
+            DropIndex("dbo.PurchaseOrders", new[] { "StoreID" });
             DropIndex("dbo.PurchaseOrders", new[] { "Vendor_ID", "Vendor_Version" });
             DropIndex("dbo.ContractItems", new[] { "Contract_ID" });
             DropIndex("dbo.ContractItems", new[] { "ProductID" });
             DropIndex("dbo.Contracts", new[] { "Vendor_ID", "Vendor_Version" });
             DropForeignKey("dbo.POItems", "PurchaseOrder_ID", "dbo.PurchaseOrders");
             DropForeignKey("dbo.POItems", "ProductID", "dbo.Products");
+            DropForeignKey("dbo.PurchaseOrders", "StoreID", "dbo.Stores");
             DropForeignKey("dbo.PurchaseOrders", new[] { "Vendor_ID", "Vendor_Version" }, "dbo.Vendors");
             DropForeignKey("dbo.ContractItems", "Contract_ID", "dbo.Contracts");
             DropForeignKey("dbo.ContractItems", "ProductID", "dbo.Products");
             DropForeignKey("dbo.Contracts", new[] { "Vendor_ID", "Vendor_Version" }, "dbo.Vendors");
+            DropTable("dbo.GRNs");
             DropTable("dbo.POItems");
             DropTable("dbo.PurchaseOrders");
             DropTable("dbo.ContractItems");
             DropTable("dbo.Contracts");
+            DropTable("dbo.Stores");
             DropTable("dbo.Products");
             DropTable("dbo.Vendors");
             DropTable("dbo.whatsnews");

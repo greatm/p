@@ -203,25 +203,9 @@
     </Compile>
     <Compile Include="Mailers\IUserMailer.cs" />
     <Compile Include="Mailers\UserMailer.cs" />
-    <Compile Include="Migrations\201305200958243_mig_start.cs" />
-    <Compile Include="Migrations\201305200958243_mig_start.Designer.cs">
-      <DependentUpon>201305200958243_mig_start.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201305211222307_mig_store.cs" />
-    <Compile Include="Migrations\201305211222307_mig_store.Designer.cs">
-      <DependentUpon>201305211222307_mig_store.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201305220321574_mig_grn.cs" />
-    <Compile Include="Migrations\201305220321574_mig_grn.Designer.cs">
-      <DependentUpon>201305220321574_mig_grn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201305220549098_mig_vendor_annot.cs" />
-    <Compile Include="Migrations\201305220549098_mig_vendor_annot.Designer.cs">
-      <DependentUpon>201305220549098_mig_vendor_annot.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201305221206035_mig_vendor_annot2.cs" />
-    <Compile Include="Migrations\201305221206035_mig_vendor_annot2.Designer.cs">
-      <DependentUpon>201305221206035_mig_vendor_annot2.cs</DependentUpon>
+    <Compile Include="Migrations\201305221225125_mig_start.cs" />
+    <Compile Include="Migrations\201305221225125_mig_start.Designer.cs">
+      <DependentUpon>201305221225125_mig_start.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -409,20 +393,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201305200958243_mig_start.resx">
-      <DependentUpon>201305200958243_mig_start.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201305211222307_mig_store.resx">
-      <DependentUpon>201305211222307_mig_store.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201305220321574_mig_grn.resx">
-      <DependentUpon>201305220321574_mig_grn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201305220549098_mig_vendor_annot.resx">
-      <DependentUpon>201305220549098_mig_vendor_annot.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201305221206035_mig_vendor_annot2.resx">
-      <DependentUpon>201305221206035_mig_vendor_annot2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201305221225125_mig_start.resx">
+      <DependentUpon>201305221225125_mig_start.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
