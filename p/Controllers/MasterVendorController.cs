@@ -20,27 +20,8 @@ namespace p.Controllers
         public ActionResult Index()
         {
             var lastVersionVendors = from n in db.Vendors
-                    group n by n.ID into g
-                    select g.OrderByDescending(t => t.Version).FirstOrDefault();
-
-            //var results = (from rec in db.Vendors
-            //               group rec by rec.ID into grp
-            //               select new
-            //               {
-            //                   ID = grp.Key,
-            //                   Version = grp.OrderByDescending(r => r.Version).Select(x => x.Version).FirstOrDefault()
-            //                   //,
-            //                   //Data = grp.OrderByDescending(r => r.Version).Select(x => x.Data).FirstOrDefault()
-            //               }
-            //);
-            //var vendors= db.Vendors
-            //                .GroupBy(t=>t.ID)
-            //                .Select(t=>new {})
-            //                ;
-            //var vvendors= foreach (var vv in vendors)
-            //{
-            //vv.v
-            //};
+                                     group n by n.ID into g
+                                     select g.OrderByDescending(t => t.Version).FirstOrDefault();
             return View(lastVersionVendors.ToList());
         }
 

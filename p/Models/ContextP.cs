@@ -18,7 +18,6 @@ namespace p.Models
 
         public DbSet<Contract> Contracts { get; set; }
         public DbSet<PurchaseOrder> PurchaseOrders { get; set; }
-
         public DbSet<GRN> GRNs { get; set; }
     }
     public static class Seeder

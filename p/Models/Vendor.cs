@@ -11,7 +11,6 @@ namespace p.Models
     {
         [Key, Column(Order = 0)]
         [Display(AutoGenerateField = true)]
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
         [Key, Column(Order = 1)]

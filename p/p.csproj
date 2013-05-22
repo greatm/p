@@ -207,6 +207,10 @@
     <Compile Include="Migrations\201305221225125_mig_start.Designer.cs">
       <DependentUpon>201305221225125_mig_start.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201305221330127_mig_contract_change.cs" />
+    <Compile Include="Migrations\201305221330127_mig_contract_change.Designer.cs">
+      <DependentUpon>201305221330127_mig_contract_change.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ContextP.cs" />
@@ -395,6 +399,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201305221225125_mig_start.resx">
       <DependentUpon>201305221225125_mig_start.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305221330127_mig_contract_change.resx">
+      <DependentUpon>201305221330127_mig_contract_change.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

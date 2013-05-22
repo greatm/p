@@ -55,7 +55,9 @@ namespace p.Controllers
             }
             if (newContract.ContractItems.Count < 1)
             {
-                newContract.ContractItems.Add(new ContractItem());
+                  contractItem = new ContractItem();
+                  CreateProductsList(contractItem);
+                  newContract.ContractItems.Add(contractItem);
             }
             CreateVendorsList(newContract);
             return View(newContract);

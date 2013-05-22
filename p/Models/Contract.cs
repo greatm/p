@@ -9,7 +9,13 @@ namespace p.Models
 {
     public class Contract
     {
+        [Key, Column(Order = 0)]
+        [Display(AutoGenerateField = true)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
+        [Key, Column(Order = 1)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int Version { get; set; }
         [Timestamp]
         public Byte[] Timestamp { get; set; }
 
