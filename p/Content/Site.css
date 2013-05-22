@@ -47,11 +47,12 @@ header, footer, hgroup, nav, section {
 }
 
     #accordionMenu > h3 {
-        background: darkseagreen;
+        /*background-color:lightsteelblue;*/
+        background: lightsteelblue;
     }
 
     #accordionMenu > div {
-        background: lightgreen;
+        background: lightskyblue;
     }
 
 mark {
@@ -126,7 +127,7 @@ h5, h6 {
 }
 
 .main-content {
-    background: url("../Images/accent.png") no-repeat;
+    /*background: url("../Images/accent.png") no-repeat;*/
     padding-left: 10px;
     padding-top: 30px;
 }
@@ -144,7 +145,7 @@ footer {
     /*position: absolute;*/
     /*clear: both;*/
     /*background-color: #e2e2e2;*/
-    background-color: tomato;
+    background-color: dodgerblue;
     font-size: .8em;
     height: 30px;
     width: 100%;
