@@ -19,6 +19,8 @@ namespace p.Models
         public DbSet<PurchaseOrder> PurchaseOrders { get; set; }
 
         public DbSet<Store> Stores { get; set; }
+
+        public DbSet<GRN> GRNs { get; set; }
     }
     public static class Seeder
     {

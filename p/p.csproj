@@ -192,6 +192,7 @@
     <Compile Include="Controllers\MasterStoreController.cs" />
     <Compile Include="Controllers\MasterVendorController.cs" />
     <Compile Include="Controllers\PurchaseContractController.cs" />
+    <Compile Include="Controllers\PurchaseGrnController.cs" />
     <Compile Include="Controllers\PurchasePOController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -205,11 +206,17 @@
     <Compile Include="Migrations\201305211222307_mig_store.Designer.cs">
       <DependentUpon>201305211222307_mig_store.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201305220321574_mig_grn.cs" />
+    <Compile Include="Migrations\201305220321574_mig_grn.Designer.cs">
+      <DependentUpon>201305220321574_mig_grn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ContextP.cs" />
     <Compile Include="Models\Contract.cs" />
     <Compile Include="Models\ContractItem.cs" />
+    <Compile Include="Models\GRN.cs" />
+    <Compile Include="Models\GRNitem.cs" />
     <Compile Include="Models\POItem.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\PurchaseOrder.cs" />
@@ -374,6 +381,11 @@
     <Content Include="Views\MasterStore\Create.cshtml" />
     <Content Include="Views\MasterStore\Edit.cshtml" />
     <Content Include="Views\MasterStore\Delete.cshtml" />
+    <Content Include="Views\PurchaseGrn\Index.cshtml" />
+    <Content Include="Views\PurchaseGrn\Details.cshtml" />
+    <Content Include="Views\PurchaseGrn\Create.cshtml" />
+    <Content Include="Views\PurchaseGrn\Edit.cshtml" />
+    <Content Include="Views\PurchaseGrn\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -387,6 +399,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201305211222307_mig_store.resx">
       <DependentUpon>201305211222307_mig_store.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305220321574_mig_grn.resx">
+      <DependentUpon>201305220321574_mig_grn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
