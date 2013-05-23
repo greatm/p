@@ -7,17 +7,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace p.Models
 {
-    public class Product
+    public class Product : VersionTable
     {
-        [Key, Column(Order = 0)]
-        [Display(AutoGenerateField = true)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ID { get; set; }
-        [Key, Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Version { get; set; }
-        [Timestamp]
-        public Byte[] Timestamp { get; set; }
+        //[Key, Column(Order = 0)]
+        ////[Display(AutoGenerateField = true)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
+        //public int ID { get; set; }
+        //[Key, Column(Order = 1)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
+        //public int Version { get; set; }
+        //[Timestamp]
+        //public Byte[] Timestamp { get; set; }
 
         [Required]
         public string Name { get; set; }
@@ -36,8 +36,8 @@ namespace p.Models
         public string Color { get; set; }
         public byte[] Image { get; set; }
 
-        [Display(Prompt = "any thing about this product")]
-        public string Remarks { get; set; }
+        //[Display(Prompt = "any thing about this product")]
+        //public string Remarks { get; set; }
 
         public Product()
         {

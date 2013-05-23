@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace p.Models
 {
@@ -20,6 +22,19 @@ namespace p.Models
         public DbSet<PurchaseOrder> PurchaseOrders { get; set; }
         public DbSet<GRN> GRNs { get; set; }
     }
+    public class VersionTable
+    {
+        [Key, Column(Order = 0)]
+        //[Display(AutoGenerateField = true)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int ID { get; set; }
+        [Key, Column(Order = 1)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int Version { get; set; }
+        [Timestamp]
+        public Byte[] Timestamp { get; set; }
+        public string Remarks { get; set; }
+    }
     public static class Seeder
     {
         public static void Seed(ContextP context)
@@ -28,7 +43,10 @@ namespace p.Models
                 p => p.WorkTime,
 
 
-                   //new whatsnew { WorkTime = new DateTime(2013, 5, 23, 15, 00, 0), Work = "master vendor index – fit in page" },
+                   //new whatsnew { WorkTime = new DateTime(2013, 5, 23, 18, 00, 0), Work = "master product version add" },
+                   new whatsnew { WorkTime = new DateTime(2013, 5, 23, 18, 00, 0), Work = "master product version add" },
+                   new whatsnew { WorkTime = new DateTime(2013, 5, 23, 17, 00, 0), Work = "add message support" },
+                   new whatsnew { WorkTime = new DateTime(2013, 5, 23, 16, 00, 0), Work = "master vendor edit – key error" },
                    new whatsnew { WorkTime = new DateTime(2013, 5, 23, 15, 00, 0), Work = "master vendor index – fit in page" },
                    new whatsnew { WorkTime = new DateTime(2013, 5, 23, 14, 00, 0), Work = "footer starts after menu" },
                    new whatsnew { WorkTime = new DateTime(2013, 5, 23, 10, 00, 0), Work = "add master store" },

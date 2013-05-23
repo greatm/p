@@ -10,7 +10,7 @@ namespace p.Models
     public class PurchaseOrder
     {
         [Key, Column(Order = 0)]
-        [Display(AutoGenerateField = true)]
+        //[Display(AutoGenerateField = true)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
         [Key, Column(Order = 1)]

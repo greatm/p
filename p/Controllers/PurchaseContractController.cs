@@ -25,6 +25,13 @@ namespace p.Controllers
                                group n by n.ID into g
                                select g.OrderByDescending(t => t.Version).FirstOrDefault();
             return View(lastVersions);
+            //return View(GetLastVersions(db.Contracts) as IEnumerable<Contract>);
+        }
+        IEnumerable<VersionTable> GetLastVersions(IEnumerable<VersionTable> tableToRead)
+        {
+            return from n in tableToRead
+                   group n by n.ID into g
+                   select g.OrderByDescending(t => t.Version).FirstOrDefault();
         }
 
         //
@@ -106,11 +113,21 @@ namespace p.Controllers
 
         public ActionResult Edit(int id = 0, int version = 0)
         {
+           
             Contract contract = db.Contracts.Find(id, version);
             if (contract == null)
             {
                 return HttpNotFound();
             }
+
+            CreateVendorsList(contract);
+
+            db.Entry(contract).Collection(t => t.ContractItems).Load();
+            foreach (ContractItem citem in contract.ContractItems)
+            {
+                CreateProductsList(citem);
+            }
+            
             return View(contract);
         }
 
