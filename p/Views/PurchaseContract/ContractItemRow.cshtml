@@ -9,7 +9,7 @@
             <img src="@Url.Content("~/Images/draggable-icon.png")" style="cursor: move" alt="drag"/>
         </td>    
 
-        <td style="width: 100px" class="combo">
+        <td class="combo">
             @Html.DropDownList("ProductID", String.Empty)
             @Html.ValidationMessageFor(model => model.ProductID)
         </td>
