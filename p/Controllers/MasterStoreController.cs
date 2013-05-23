@@ -18,15 +18,19 @@ namespace p.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Stores.ToList());
+            var lastVersions = from n in db.Stores
+                               group n by n.ID into g
+                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            return View(lastVersions.ToList());
+            //return View(db.Stores.ToList());
         }
 
         //
         // GET: /MasterStore/Details/5
 
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(int id = 0, int version = 0)
         {
-            Store store = db.Stores.Find(id);
+            Store store = db.Stores.Find(id, version);
             if (store == null)
             {
                 return HttpNotFound();
@@ -51,6 +55,14 @@ namespace p.Controllers
         {
             if (ModelState.IsValid)
             {
+                int iId = 1;
+                try
+                {
+                    iId = db.Stores.Max(t => t.ID) + 1;
+                }
+                catch { }
+                store.ID = iId;
+                store.Version = 1;
                 db.Stores.Add(store);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -62,9 +74,9 @@ namespace p.Controllers
         //
         // GET: /MasterStore/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(int id = 0, int version = 0)
         {
-            Store store = db.Stores.Find(id);
+            Store store = db.Stores.Find(id, version);
             if (store == null)
             {
                 return HttpNotFound();
@@ -81,7 +93,17 @@ namespace p.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(store).State = EntityState.Modified;
+                //db.Entry(store).State = EntityState.Modified;
+                Store newItem = new Store
+                {
+                    ID = store.ID,
+                    Version = store.Version + 1,
+                    Timestamp = store.Timestamp,
+                    Name = store.Name,
+                    Description = store.Description,
+                    Remarks = store.Remarks
+                };
+                db.Stores.Add(newItem);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -91,9 +113,9 @@ namespace p.Controllers
         //
         // GET: /MasterStore/Delete/5
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(int id = 0, int version = 0)
         {
-            Store store = db.Stores.Find(id);
+            Store store = db.Stores.Find(id, version);
             if (store == null)
             {
                 return HttpNotFound();
@@ -106,9 +128,9 @@ namespace p.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id, int version)
         {
-            Store store = db.Stores.Find(id);
+            Store store = db.Stores.Find(id, version);
             db.Stores.Remove(store);
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -1,10 +1,10 @@
 ﻿@model p.Models.Store
 
 @{
-    ViewBag.Title = "store details";
+    ViewBag.Title = "master store details";
 }
 
-<h2>Store Details</h2>
+<h2>Master Store Details</h2>
 
 <fieldset>
     <legend>Store</legend>
@@ -31,6 +31,6 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID, version = Model.Version }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

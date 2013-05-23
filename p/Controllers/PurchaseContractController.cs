@@ -21,15 +21,18 @@ namespace p.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Contracts.ToList());
+            var lastVersions = from n in db.Contracts
+                               group n by n.ID into g
+                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            return View(lastVersions);
         }
 
         //
         // GET: /PurchaseContract/Details/5
 
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(int id = 0, int version = 0)
         {
-            Contract contract = db.Contracts.Find(id);
+            Contract contract = db.Contracts.Find(id, version);
             if (contract == null)
             {
                 return HttpNotFound();
@@ -44,7 +47,10 @@ namespace p.Controllers
         {
             Contract newContract = new Contract { StartDate = DateTime.Today, EndDate = DateTime.Today.AddYears(1), ContractItems = new List<ContractItem>() };
             ContractItem contractItem = null;
-            foreach (Product prd in db.Products)
+            var lastVersions = from n in db.Products
+                               group n by n.ID into g
+                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            foreach (Product prd in lastVersions)
             {
                 //if (prd.RoL > 5)
                 //{
@@ -72,6 +78,14 @@ namespace p.Controllers
         {
             if (ModelState.IsValid)
             {
+                int iId = 1;
+                try
+                {
+                    iId = db.Contracts.Max(t => t.ID) + 1;
+                }
+                catch { }
+                contract.ID = iId;
+                contract.Version = 1;
                 db.Contracts.Add(contract);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -90,9 +104,9 @@ namespace p.Controllers
         //
         // GET: /PurchaseContract/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(int id = 0, int version = 0)
         {
-            Contract contract = db.Contracts.Find(id);
+            Contract contract = db.Contracts.Find(id, version);
             if (contract == null)
             {
                 return HttpNotFound();
@@ -109,7 +123,25 @@ namespace p.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(contract).State = EntityState.Modified;
+                //db.Entry(contract).State = EntityState.Modified;
+                Product newItem = new Product
+                {
+                    ID = product.ID,
+                    Version = product.Version + 1,
+                    Timestamp = product.Timestamp,
+                    Name = product.Name,
+                    Category = product.Category,
+                    Description = product.Description,
+                    UoM = product.UoM,
+                    RoL = product.RoL,
+                    RoQ = product.RoQ,
+                    LastPurchaseRate = product.LastPurchaseRate,
+                    Color = product.Color,
+                    Image = product.Image,
+                    Remarks = product.Remarks
+                };
+                db.Products.Add(newItem);
+             
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -119,9 +151,9 @@ namespace p.Controllers
         //
         // GET: /PurchaseContract/Delete/5
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(int id = 0, int version = 0)
         {
-            Contract contract = db.Contracts.Find(id);
+            Contract contract = db.Contracts.Find(id, version);
             if (contract == null)
             {
                 return HttpNotFound();
@@ -134,9 +166,9 @@ namespace p.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id, int version = 0)
         {
-            Contract contract = db.Contracts.Find(id);
+            Contract contract = db.Contracts.Find(id, version);
             db.Contracts.Remove(contract);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -152,9 +184,12 @@ namespace p.Controllers
         #region function
         private void CreateVendorsList(Contract contract)
         {
+            var lastVersions = from n in db.Vendors
+                               group n by n.ID into g
+                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
             var vendors = db.Vendors;
             List<object> newList = new List<object>();
-            foreach (var vendor in vendors)
+            foreach (var vendor in lastVersions)
                 newList.Add(new
                 {
                     Id = vendor.ID,
@@ -164,7 +199,10 @@ namespace p.Controllers
         }
         private void CreateProductsList(ContractItem contractItem)
         {
-            this.ViewData["ProductID"] = new SelectList(db.Products, "Id", "Name", contractItem.ProductID);
+            var lastVersions = from n in db.Products
+                               group n by n.ID into g
+                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            this.ViewData["ProductID"] = new SelectList(lastVersions, "Id", "Name", contractItem.ProductID);
         }
         #endregion
     }
