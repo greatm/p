@@ -1,12 +1,13 @@
 ﻿@model p.Models.GRN
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "grn create";
 }
 
-<h2>Create</h2>
+<h2>GRN Create</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 

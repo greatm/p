@@ -28,7 +28,8 @@ namespace p.Models
                 p => p.WorkTime,
 
 
-                   //new whatsnew { WorkTime = new DateTime(2013, 5, 22, 18, 00, 0), Work = "create master – product" },
+                   //new whatsnew { WorkTime = new DateTime(2013, 5, 22, 18, 00, 0), Work = "left menu - select previous item" },
+                   new whatsnew { WorkTime = new DateTime(2013, 5, 22, 18, 00, 0), Work = "left menu - select previous item" },
                    new whatsnew { WorkTime = new DateTime(2013, 5, 22, 17, 00, 0), Work = "create master – product" },
                    new whatsnew { WorkTime = new DateTime(2013, 5, 22, 16, 00, 0), Work = "footer area color – blue" },
                    new whatsnew { WorkTime = new DateTime(2013, 5, 22, 15, 00, 0), Work = "body area color – yellow" },

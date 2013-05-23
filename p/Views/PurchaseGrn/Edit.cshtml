@@ -1,12 +1,13 @@
 ﻿@model p.Models.GRN
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "grn edit";
 }
 
-<h2>Edit</h2>
+<h2>GRN Edit</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 

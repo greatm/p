@@ -1,12 +1,13 @@
 ﻿@model p.Models.Store
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "store edit";
 }
 
-<h2>Edit</h2>
+<h2>Store Edit</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
@@ -50,5 +51,5 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    @*@Scripts.Render("~/bundles/jqueryval")*@
 }

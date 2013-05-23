@@ -148,9 +148,9 @@ namespace p.Controllers
         //
         // GET: /MasterVendor/Delete/5
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(int id = 0, int version = 0)
         {
-            Vendor vendor = db.Vendors.Find(id);
+            Vendor vendor = db.Vendors.Find(id, version);
             if (vendor == null)
             {
                 return HttpNotFound();
@@ -163,9 +163,9 @@ namespace p.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id, int version = 0)
         {
-            Vendor vendor = db.Vendors.Find(id);
+            Vendor vendor = db.Vendors.Find(id, version);
             db.Vendors.Remove(vendor);
             db.SaveChanges();
             return RedirectToAction("Index");
