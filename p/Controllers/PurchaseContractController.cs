@@ -124,7 +124,7 @@ namespace p.Controllers
             if (ModelState.IsValid)
             {
                 //db.Entry(contract).State = EntityState.Modified;
-                Product newItem = new Product
+                Contract newItem = new Contract
                 {
                     ID = product.ID,
                     Version = product.Version + 1,
@@ -140,7 +140,7 @@ namespace p.Controllers
                     Image = product.Image,
                     Remarks = product.Remarks
                 };
-                db.Products.Add(newItem);
+                db.Contracts.Add(newItem);
              
                 db.SaveChanges();
                 return RedirectToAction("Index");
