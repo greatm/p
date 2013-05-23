@@ -81,10 +81,10 @@
             </tr>
 
             @if (Model == null || Model.ContractItems == null || Model.ContractItems.Count == 0)
-        {
-            <p>None.</p>
-        }
-        @if (Model != null && Model.ContractItems != null)
+            {
+                <p>None.</p>
+            }
+            @if (Model != null && Model.ContractItems != null)
             {
                 foreach (ContractItem contractItem in Model.ContractItems)
                 {

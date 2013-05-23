@@ -16,16 +16,11 @@ namespace p.Controllers
         #endregion
 
         #region action
-        //
-        // GET: /PurchasePO/
 
         public ActionResult Index()
         {
             return View(db.PurchaseOrders.ToList());
         }
-
-        //
-        // GET: /PurchasePO/Details/5
 
         public ActionResult Details(int id = 0)
         {
@@ -36,9 +31,6 @@ namespace p.Controllers
             }
             return View(purchaseorder);
         }
-
-        //
-        // GET: /PurchasePO/Create
 
         public ActionResult Create()
         {
@@ -62,9 +54,6 @@ namespace p.Controllers
             return View(newPO);
         }
 
-        //
-        // POST: /PurchasePO/Create
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(PurchaseOrder purchaseorder)
@@ -79,9 +68,6 @@ namespace p.Controllers
             return View(purchaseorder);
         }
 
-        //
-        // GET: /PurchasePO/Edit/5
-
         public ActionResult Edit(int id = 0)
         {
             PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
@@ -91,9 +77,6 @@ namespace p.Controllers
             }
             return View(purchaseorder);
         }
-
-        //
-        // POST: /PurchasePO/Edit/5
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -108,9 +91,6 @@ namespace p.Controllers
             return View(purchaseorder);
         }
 
-        //
-        // GET: /PurchasePO/Delete/5
-
         public ActionResult Delete(int id = 0)
         {
             PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
@@ -120,9 +100,6 @@ namespace p.Controllers
             }
             return View(purchaseorder);
         }
-
-        //
-        // POST: /PurchasePO/Delete/5
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -157,7 +134,7 @@ namespace p.Controllers
         }
         private void CreateStoresList(PurchaseOrder workPO)
         {
-            this.ViewData["ProductID"] = new SelectList(db.Products, "Id", "Name", workPO.StoreID);
+            this.ViewData["StoreID"] = new SelectList(db.Products, "Id", "Name", workPO.StoreID);
         }
         private void CreateProductsList(POItem poitem)
         {

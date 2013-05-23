@@ -28,7 +28,9 @@ namespace p.Models
                 p => p.WorkTime,
 
 
-                   //new whatsnew { WorkTime = new DateTime(2013, 5, 23, 10, 00, 0), Work = "add master store" },
+                   //new whatsnew { WorkTime = new DateTime(2013, 5, 23, 15, 00, 0), Work = "master vendor index – fit in page" },
+                   new whatsnew { WorkTime = new DateTime(2013, 5, 23, 15, 00, 0), Work = "master vendor index – fit in page" },
+                   new whatsnew { WorkTime = new DateTime(2013, 5, 23, 14, 00, 0), Work = "footer starts after menu" },
                    new whatsnew { WorkTime = new DateTime(2013, 5, 23, 10, 00, 0), Work = "add master store" },
                    new whatsnew { WorkTime = new DateTime(2013, 5, 22, 18, 00, 0), Work = "left menu - select previous item" },
                    new whatsnew { WorkTime = new DateTime(2013, 5, 22, 17, 00, 0), Work = "create master – product" },
