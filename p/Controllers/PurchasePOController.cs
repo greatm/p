@@ -36,12 +36,13 @@ namespace p.Controllers
         {
             PurchaseOrder newPO = new PurchaseOrder { Date = DateTime.Today, POItems = new List<POItem>() };
             POItem poitem = null;
+            CreateProductsList();
             foreach (Product prd in db.Products)
             {
                 if (prd.RoL > 5)
                 {
                     poitem = new POItem { Product = prd, ProductID = prd.ID, Rate = prd.LastPurchaseRate, Qty = prd.RoQ, Amount = prd.LastPurchaseRate * prd.RoQ };
-                    CreateProductsList(poitem);
+                    //CreateProductsList(poitem);
                     newPO.POItems.Add(poitem);
                 }
             }
@@ -140,7 +141,10 @@ namespace p.Controllers
         {
             this.ViewData["ProductID"] = new SelectList(db.Products, "Id", "Name", poitem.ProductID);
         }
+        private void CreateProductsList()
+        {
+            this.ViewData["ProductID"] = new SelectList(db.Products, "Id", "Name");
+        }
         #endregion
-
     }
 }

@@ -1,4 +1,6 @@
-﻿@model p.Models.Contract
+﻿@using p.Models;
+@*@using p.ViewModels;*@
+@model Contract
 
 @{
     ViewBag.Title = "purchase contract create";
@@ -82,13 +84,14 @@
 
             @if (Model == null || Model.ContractItems == null || Model.ContractItems.Count == 0)
             {
-                <p>None.</p>
+                <tr><td> None.</td></tr>
             }
             @if (Model != null && Model.ContractItems != null)
             {
                 foreach (ContractItem contractItem in Model.ContractItems)
                 {
                     Html.RenderPartial("ContractItemRow", contractItem);
+                   // Html.RenderPartial("ContractItemRow", new ContractItemViewModel { ci = contractItem, Products = ViewData["ProductID"] as SelectList });
                 }
             }
         </table>

@@ -2,7 +2,7 @@ namespace p.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class mig_initial : DbMigration
     {
         public override void Up()
@@ -15,7 +15,7 @@ namespace p.Migrations
                         UserName = c.String(),
                     })
                 .PrimaryKey(t => t.UserId);
-            
+
             CreateTable(
                 "dbo.whatsnews",
                 c => new
@@ -24,7 +24,7 @@ namespace p.Migrations
                         Work = c.String(),
                     })
                 .PrimaryKey(t => t.WorkTime);
-            
+
             CreateTable(
                 "dbo.Vendors",
                 c => new
@@ -46,7 +46,7 @@ namespace p.Migrations
                         Remarks = c.String(),
                     })
                 .PrimaryKey(t => new { t.ID, t.Version });
-            
+
             CreateTable(
                 "dbo.Products",
                 c => new
@@ -66,7 +66,7 @@ namespace p.Migrations
                         Remarks = c.String(),
                     })
                 .PrimaryKey(t => new { t.ID, t.Version });
-            
+
             CreateTable(
                 "dbo.Stores",
                 c => new
@@ -79,7 +79,7 @@ namespace p.Migrations
                         Remarks = c.String(),
                     })
                 .PrimaryKey(t => new { t.ID, t.Version });
-            
+
             CreateTable(
                 "dbo.Contracts",
                 c => new
@@ -98,7 +98,7 @@ namespace p.Migrations
                 .PrimaryKey(t => new { t.ID, t.Version })
                 .ForeignKey("dbo.Vendors", t => new { t.Vendor_ID, t.Vendor_Version })
                 .Index(t => new { t.Vendor_ID, t.Vendor_Version });
-            
+
             CreateTable(
                 "dbo.ContractItems",
                 c => new
@@ -119,7 +119,7 @@ namespace p.Migrations
                 .ForeignKey("dbo.Contracts", t => new { t.Contract_ID, t.Contract_Version })
                 .Index(t => new { t.Product_ID, t.Product_Version })
                 .Index(t => new { t.Contract_ID, t.Contract_Version });
-            
+
             CreateTable(
                 "dbo.PurchaseOrders",
                 c => new
@@ -141,7 +141,7 @@ namespace p.Migrations
                 .ForeignKey("dbo.Stores", t => new { t.Store_ID, t.Store_Version })
                 .Index(t => new { t.Vendor_ID, t.Vendor_Version })
                 .Index(t => new { t.Store_ID, t.Store_Version });
-            
+
             CreateTable(
                 "dbo.POItems",
                 c => new
@@ -162,7 +162,7 @@ namespace p.Migrations
                 .ForeignKey("dbo.PurchaseOrders", t => new { t.PurchaseOrder_ID, t.PurchaseOrder_Version })
                 .Index(t => new { t.Product_ID, t.Product_Version })
                 .Index(t => new { t.PurchaseOrder_ID, t.PurchaseOrder_Version });
-            
+
             CreateTable(
                 "dbo.GRNs",
                 c => new
@@ -177,9 +177,9 @@ namespace p.Migrations
                         Remarks = c.String(),
                     })
                 .PrimaryKey(t => new { t.ID, t.Version });
-            
+
         }
-        
+
         public override void Down()
         {
             DropIndex("dbo.POItems", new[] { "PurchaseOrder_ID", "PurchaseOrder_Version" });

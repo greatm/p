@@ -58,13 +58,14 @@ namespace p.Controllers
             var lastVersions = from n in db.Products
                                group n by n.ID into g
                                select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            CreateProductsList();
             foreach (Product prd in lastVersions)
             {
                 //if (prd.RoL > 5)
                 //{
                 //contractItem = new ContractItem { Product = prd, ProductID = prd.ID, Rate = prd.LastPurchaseRate, Qty = prd.RoQ, Amount = prd.LastPurchaseRate * prd.RoQ };
-                contractItem = new ContractItem { ProductID = prd.ID, Rate = prd.LastPurchaseRate, Qty = prd.RoQ, Amount = prd.LastPurchaseRate * prd.RoQ };
-                CreateProductsList(contractItem);
+                contractItem = new ContractItem { Product = prd, ProductID = prd.ID, Rate = prd.LastPurchaseRate, Qty = prd.RoQ, Amount = prd.LastPurchaseRate * prd.RoQ };
+                //CreateProductsList(contractItem);
                 newContract.ContractItems.Add(contractItem);
                 //}
             }

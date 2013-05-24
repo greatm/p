@@ -40,4 +40,15 @@
         U.P.
     </p>
 </section>
-<p>@Html.ActionLink("try welcome message", "SendWelcomeMessage", "Home")</p>
+
+@using (Ajax.BeginForm("SendMail", new AjaxOptions
+{
+    UpdateTargetId = "mailResult",
+    InsertionMode = InsertionMode.Replace
+}))
+{ 
+    @Html.TextArea("mailMessage")
+    <br />
+    <input type="submit" value="send mail" />
+}
+<div id="mailResult"></div>

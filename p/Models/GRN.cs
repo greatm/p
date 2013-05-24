@@ -20,8 +20,11 @@ namespace p.Models
         //public Byte[] Timestamp { get; set; }
 
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }
+        public PurchaseOrder PO { get; set; }
         public int POID { get; set; }
+        public Vendor Vendor { get; set; }
         public int VendorID { get; set; }
         public string VendorInvoice { get; set; }
         //public string Remarks { get; set; }

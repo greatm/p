@@ -43,7 +43,8 @@ namespace p.Models
                 p => p.WorkTime,
 
 
-                   //new whatsnew { WorkTime = new DateTime(2013, 5, 23, 18, 00, 0), Work = "master product version add" },
+                   //new whatsnew { WorkTime = new DateTime(2013, 5, 24, 14, 00, 0), Work = "send contact email" },
+                   new whatsnew { WorkTime = new DateTime(2013, 5, 24, 14, 00, 0), Work = "send contact email" },
                    new whatsnew { WorkTime = new DateTime(2013, 5, 23, 18, 00, 0), Work = "master product version add" },
                    new whatsnew { WorkTime = new DateTime(2013, 5, 23, 17, 00, 0), Work = "add message support" },
                    new whatsnew { WorkTime = new DateTime(2013, 5, 23, 16, 00, 0), Work = "master vendor edit – key error" },

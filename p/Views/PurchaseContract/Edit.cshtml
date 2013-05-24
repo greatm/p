@@ -1,5 +1,5 @@
 ﻿@using p.Models;
-@using p.ViewModels;
+@*@using p.ViewModels;*@
 @model Contract
 
 @{
@@ -94,8 +94,8 @@
             {
                 foreach (ContractItem contractItem in Model.ContractItems)
                 {
-                    //Html.RenderPartial("ContractItemRow", contractItem);
-                    Html.RenderPartial("ContractItemRow", new ContractItemViewModel { ci = contractItem, Products = ViewData["ProductID"] as SelectList });
+                    Html.RenderPartial("ContractItemRow", contractItem);
+                   // Html.RenderPartial("ContractItemRow", new ContractItemViewModel { ci = contractItem, Products = ViewData["ProductID"] as SelectList });
                 }
             }
         </table>

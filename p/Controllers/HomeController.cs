@@ -47,5 +47,17 @@ namespace p.Controllers
             UserMailer.Welcome().Send(); //Send() extension method: using Mvc.Mailer
             return RedirectToAction("Index");
         }
+        public string SendMail(string mailMessage)
+        {
+            try
+            {
+                UserMailer.MailMessage(mailMessage).Send();
+            }
+            catch
+            {
+                return "mail could not be sent.";
+            }
+            return "mail sent successfully";
+        }
     }
 }

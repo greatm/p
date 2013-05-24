@@ -7,9 +7,9 @@ using System.Web.Mvc;
 
 namespace p.ViewModels
 {
-    public class ContractItemViewModel
-    {
-        public ContractItem ci;
-        public SelectList Products { get; set; }
-    }
+    //public class ContractItemViewModel
+    //{
+    //    public ContractItem ci;
+    //    public SelectList Products { get; set; }
+    //}
 }

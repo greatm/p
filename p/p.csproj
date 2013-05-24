@@ -210,6 +210,10 @@
     <Compile Include="Migrations\201305240512330_mig_initial.Designer.cs">
       <DependentUpon>201305240512330_mig_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201305240851527_mig_po_c1.cs" />
+    <Compile Include="Migrations\201305240851527_mig_po_c1.Designer.cs">
+      <DependentUpon>201305240851527_mig_po_c1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ContextP.cs" />
@@ -398,6 +402,7 @@
     <Content Include="Views\UserMailer\_Layout.cshtml" />
     <Content Include="Views\UserMailer\Welcome.cshtml" />
     <Content Include="Views\PurchasePO\POItemEntry.cshtml" />
+    <Content Include="Views\PurchaseContract\ContractItemRow1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -408,6 +413,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201305240512330_mig_initial.resx">
       <DependentUpon>201305240512330_mig_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305240851527_mig_po_c1.resx">
+      <DependentUpon>201305240851527_mig_po_c1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
