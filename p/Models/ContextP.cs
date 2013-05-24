@@ -27,14 +27,18 @@ namespace p.Models
     public class VersionTable
     {
         [Key, Column(Order = 0)]
-        //[Display(AutoGenerateField = true)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
+
         [Key, Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Version { get; set; }
-        [Timestamp]
-        public Byte[] Timestamp { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime EntryDate { get; set; }
+
+        //[Timestamp]
+        //public Byte[] Timestamp { get; set; }
         public string Remarks { get; set; }
     }
     public static class Seeder
@@ -44,8 +48,8 @@ namespace p.Models
             context.whatsnews.AddOrUpdate(
                 p => p.WorkTime,
 
-
-                   //new whatsnew { WorkTime = new DateTime(2013, 5, 24, 14, 00, 0), Work = "send contact email" },
+                   //new whatsnew { WorkTime = new DateTime(2013, 5, 24, 15, 00, 0), Work = "create purchase - contract " },
+                   new whatsnew { WorkTime = new DateTime(2013, 5, 24, 15, 00, 0), Work = "create purchase - contract " },
                    new whatsnew { WorkTime = new DateTime(2013, 5, 24, 14, 00, 0), Work = "send contact email" },
                    new whatsnew { WorkTime = new DateTime(2013, 5, 23, 18, 00, 0), Work = "master product version add" },
                    new whatsnew { WorkTime = new DateTime(2013, 5, 23, 17, 00, 0), Work = "add message support" },

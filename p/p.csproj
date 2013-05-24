@@ -219,6 +219,14 @@
     <Compile Include="Migrations\201305241001130_mig_payment.Designer.cs">
       <DependentUpon>201305241001130_mig_payment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201305241124239_mig_timestamp_remove.cs" />
+    <Compile Include="Migrations\201305241124239_mig_timestamp_remove.Designer.cs">
+      <DependentUpon>201305241124239_mig_timestamp_remove.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305241154152_mig_entryDate.cs" />
+    <Compile Include="Migrations\201305241154152_mig_entryDate.Designer.cs">
+      <DependentUpon>201305241154152_mig_entryDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ContextP.cs" />
@@ -305,6 +313,7 @@
     <Content Include="App_Browsers\qt.browser" />
     <None Include="Properties\PublishProfiles\p.esamadhan.net.pubxml" />
     <None Include="Scripts\jquery-2.0.0.intellisense.js" />
+    <Content Include="Images\draggable-icon.png" />
     <Content Include="Images\es_logo.png" />
     <Content Include="NuGet.exe" />
     <Content Include="Rotativa\libeay32.dll" />
@@ -430,6 +439,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201305241001130_mig_payment.resx">
       <DependentUpon>201305241001130_mig_payment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305241124239_mig_timestamp_remove.resx">
+      <DependentUpon>201305241124239_mig_timestamp_remove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305241154152_mig_entryDate.resx">
+      <DependentUpon>201305241154152_mig_entryDate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

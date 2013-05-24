@@ -14,9 +14,6 @@ namespace p.Controllers
     {
         private ContextP db = new ContextP();
 
-        //
-        // GET: /MasterVendor/
-
         public ActionResult Index()
         {
             var lastVersionVendors = from n in db.Vendors
@@ -24,9 +21,6 @@ namespace p.Controllers
                                      select g.OrderByDescending(t => t.Version).FirstOrDefault();
             return View(lastVersionVendors.ToList());
         }
-
-        //
-        // GET: /MasterVendor/Details/5
 
         public ActionResult Details(int id = 0, int version = 0)
         {
@@ -38,16 +32,10 @@ namespace p.Controllers
             return View(vendor);
         }
 
-        //
-        // GET: /MasterVendor/Create
-
         public ActionResult Create()
         {
             return View();
         }
-
-        //
-        // POST: /MasterVendor/Create
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -63,6 +51,7 @@ namespace p.Controllers
                 catch { }
                 vendor.ID = iId;
                 vendor.Version = 1;
+                vendor.EntryDate = DateTime.Now;
                 db.Vendors.Add(vendor);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -70,9 +59,6 @@ namespace p.Controllers
 
             return View(vendor);
         }
-
-        //
-        // GET: /MasterVendor/Edit/5
 
         public ActionResult Edit(int id = 0, int version = 0)
         {
@@ -84,69 +70,22 @@ namespace p.Controllers
             return View(vendor);
         }
 
-        //
-        // POST: /MasterVendor/Edit/5
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Vendor vendor)
         {
             if (ModelState.IsValid)
             {
-                //db.Entry(vendor).State = EntityState.Modified;
-                try
-                {
-                    Vendor vendorV = new Vendor
-                    {
-                        ID = vendor.ID,
-                        Version = vendor.Version + 1,
-                        Timestamp = vendor.Timestamp,
-                        Name = vendor.Name,
-                        Person = vendor.Person,
-                        Address = vendor.Address,
-                        City = vendor.City,
-                        State = vendor.State,
-                        PostalCode = vendor.PostalCode,
-                        Country = vendor.Country,
-                        Mobile = vendor.Mobile,
-                        Phone = vendor.Phone,
-                        eMail = vendor.eMail,
-                        WebSite = vendor.WebSite,
-                        Remarks = vendor.Remarks
-                    };
-                    db.Vendors.Add(vendorV);
-                    db.SaveChanges();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    Vendor vendorV = new Vendor
-                    {
-                        ID = vendor.ID,
-                        Version = vendor.Version + 1,
-                        Timestamp = vendor.Timestamp,
-                        Name = vendor.Name,
-                        Person = vendor.Person,
-                        Address = vendor.Address,
-                        City = vendor.City,
-                        State = vendor.State,
-                        PostalCode = vendor.PostalCode,
-                        Country = vendor.Country,
-                        Mobile = vendor.Mobile,
-                        Phone = vendor.Phone,
-                        eMail = vendor.eMail,
-                        WebSite = vendor.WebSite,
-                        Remarks = vendor.Remarks
-                    };
-                    db.Vendors.Add(vendorV);
-                    db.SaveChanges();
-                }
+                Vendor newItem = vendor;
+                newItem.Version = vendor.Version + 1;
+                newItem.EntryDate = DateTime.Now;
+                db.Vendors.Add(newItem);
+                db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
             return View(vendor);
         }
-
-        //
-        // GET: /MasterVendor/Delete/5
 
         public ActionResult Delete(int id = 0, int version = 0)
         {
@@ -157,9 +96,6 @@ namespace p.Controllers
             }
             return View(vendor);
         }
-
-        //
-        // POST: /MasterVendor/Delete/5
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

@@ -9,16 +9,6 @@ namespace p.Models
 {
     public class GRN : VersionTable
     {
-        //[Key, Column(Order = 0)]
-        ////[Display(AutoGenerateField = true)]
-        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
-        //public int ID { get; set; }
-        //[Key, Column(Order = 1)]
-        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
-        //public int Version { get; set; }
-        //[Timestamp]
-        //public Byte[] Timestamp { get; set; }
-
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }
@@ -27,7 +17,6 @@ namespace p.Models
         public Vendor Vendor { get; set; }
         public int VendorID { get; set; }
         public string VendorInvoice { get; set; }
-        //public string Remarks { get; set; }
         public IEnumerable<GRNitem> PurchaseItems { get; set; }
 
         public IEnumerable<Vendor> Vendors { get; set; }

@@ -9,16 +9,6 @@ namespace p.Models
 {
     public class Product : VersionTable
     {
-        //[Key, Column(Order = 0)]
-        ////[Display(AutoGenerateField = true)]
-        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
-        //public int ID { get; set; }
-        //[Key, Column(Order = 1)]
-        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
-        //public int Version { get; set; }
-        //[Timestamp]
-        //public Byte[] Timestamp { get; set; }
-
         [Required]
         public string Name { get; set; }
         public string Category { get; set; }
@@ -35,9 +25,6 @@ namespace p.Models
         public decimal LastPurchaseRate { get; set; }
         public string Color { get; set; }
         public byte[] Image { get; set; }
-
-        //[Display(Prompt = "any thing about this product")]
-        //public string Remarks { get; set; }
 
         public Product()
         {

@@ -109,7 +109,7 @@ namespace p.Controllers
                 {
                     ID = product.ID,
                     Version = product.Version + 1,
-                    Timestamp = product.Timestamp,
+                    //Timestamp = product.Timestamp,
                     Name = product.Name,
                     Category = product.Category,
                     Description = product.Description,

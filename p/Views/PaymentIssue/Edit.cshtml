@@ -1,12 +1,13 @@
 ﻿@model p.Models.Payment
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "payment issue edit";
 }
 
-<h2>Edit</h2>
+<h2>Payment Issue Edit</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 

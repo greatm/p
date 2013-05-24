@@ -98,7 +98,7 @@ namespace p.Controllers
                 {
                     ID = store.ID,
                     Version = store.Version + 1,
-                    Timestamp = store.Timestamp,
+                    //Timestamp = store.Timestamp,
                     Name = store.Name,
                     Description = store.Description,
                     Remarks = store.Remarks

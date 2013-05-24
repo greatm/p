@@ -17,8 +17,6 @@ namespace p.Controllers
         #endregion
 
         #region action
-        //
-        // GET: /PurchaseContract/
 
         public ActionResult Index()
         {
@@ -26,7 +24,6 @@ namespace p.Controllers
                                group n by n.ID into g
                                select g.OrderByDescending(t => t.Version).FirstOrDefault();
             return View(lastVersions);
-            //return View(GetLastVersions(db.Contracts) as IEnumerable<Contract>);
         }
         IEnumerable<VersionTable> GetLastVersions(IEnumerable<VersionTable> tableToRead)
         {
@@ -34,9 +31,6 @@ namespace p.Controllers
                    group n by n.ID into g
                    select g.OrderByDescending(t => t.Version).FirstOrDefault();
         }
-
-        //
-        // GET: /PurchaseContract/Details/5
 
         public ActionResult Details(int id = 0, int version = 0)
         {
@@ -47,9 +41,6 @@ namespace p.Controllers
             }
             return View(contract);
         }
-
-        //
-        // GET: /PurchaseContract/Create
 
         public ActionResult Create()
         {
@@ -79,9 +70,6 @@ namespace p.Controllers
             return View(newContract);
         }
 
-        //
-        // POST: /PurchaseContract/Create
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Contract contract)
@@ -96,6 +84,7 @@ namespace p.Controllers
                 catch { }
                 contract.ID = iId;
                 contract.Version = 1;
+                contract.EntryDate = DateTime.Now;
                 db.Contracts.Add(contract);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -110,9 +99,6 @@ namespace p.Controllers
             CreateProductsList(new ContractItem());
             return PartialView();
         }
-
-        //
-        // GET: /PurchaseContract/Edit/5
 
         public ActionResult Edit(int id = 0, int version = 0)
         {
@@ -135,9 +121,6 @@ namespace p.Controllers
 
             return View(contract);
         }
-
-        //
-        // POST: /PurchaseContract/Edit/5
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -247,7 +230,7 @@ namespace p.Controllers
             var lastVersions = from n in db.Products
                                group n by n.ID into g
                                select g.OrderByDescending(t => t.Version).FirstOrDefault();
-            this.ViewData["ProductID"] = new SelectList(lastVersions, "Id", "Name", contractItem.ProductID);
+            this.ViewData["Products"] = new SelectList(lastVersions, "Id", "Name", contractItem.ProductID);
 
         }
         private void CreateProductsList()
@@ -255,7 +238,7 @@ namespace p.Controllers
             var lastVersions = from n in db.Products
                                group n by n.ID into g
                                select g.OrderByDescending(t => t.Version).FirstOrDefault();
-            this.ViewData["ProductID"] = new SelectList(lastVersions, "Id", "Name");
+            this.ViewData["Products"] = new SelectList(lastVersions, "Id", "Name");
         }
         #endregion
     }
