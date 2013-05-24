@@ -197,6 +197,7 @@
     <Compile Include="Controllers\MasterProductController.cs" />
     <Compile Include="Controllers\MasterStoreController.cs" />
     <Compile Include="Controllers\MasterVendorController.cs" />
+    <Compile Include="Controllers\PaymentIssueController.cs" />
     <Compile Include="Controllers\PurchaseContractController.cs" />
     <Compile Include="Controllers\PurchaseGrnController.cs" />
     <Compile Include="Controllers\PurchasePOController.cs" />
@@ -214,6 +215,10 @@
     <Compile Include="Migrations\201305240851527_mig_po_c1.Designer.cs">
       <DependentUpon>201305240851527_mig_po_c1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201305241001130_mig_payment.cs" />
+    <Compile Include="Migrations\201305241001130_mig_payment.Designer.cs">
+      <DependentUpon>201305241001130_mig_payment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ContextP.cs" />
@@ -221,6 +226,7 @@
     <Compile Include="Models\ContractItem.cs" />
     <Compile Include="Models\GRN.cs" />
     <Compile Include="Models\GRNitem.cs" />
+    <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\POItem.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\PurchaseOrder.cs" />
@@ -403,6 +409,11 @@
     <Content Include="Views\UserMailer\Welcome.cshtml" />
     <Content Include="Views\PurchasePO\POItemEntry.cshtml" />
     <Content Include="Views\PurchaseContract\ContractItemRow1.cshtml" />
+    <Content Include="Views\PaymentIssue\Index.cshtml" />
+    <Content Include="Views\PaymentIssue\Details.cshtml" />
+    <Content Include="Views\PaymentIssue\Create.cshtml" />
+    <Content Include="Views\PaymentIssue\Edit.cshtml" />
+    <Content Include="Views\PaymentIssue\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -416,6 +427,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201305240851527_mig_po_c1.resx">
       <DependentUpon>201305240851527_mig_po_c1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305241001130_mig_payment.resx">
+      <DependentUpon>201305241001130_mig_payment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

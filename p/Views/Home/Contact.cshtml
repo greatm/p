@@ -44,11 +44,13 @@
 @using (Ajax.BeginForm("SendMail", new AjaxOptions
 {
     UpdateTargetId = "mailResult",
-    InsertionMode = InsertionMode.Replace
+    InsertionMode = InsertionMode.Replace,
+    Confirm = "Do you want to send this message to developers?",
+    LoadingElementId = "mailResult"
 }))
 { 
     @Html.TextArea("mailMessage")
     <br />
     <input type="submit" value="send mail" />
 }
-<div id="mailResult"></div>
+<div id="mailResult" style="display: none"></div>
