@@ -2,8 +2,8 @@ namespace p.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
-
-    public partial class mig_start : DbMigration
+    
+    public partial class mig_initial : DbMigration
     {
         public override void Up()
         {
@@ -15,7 +15,7 @@ namespace p.Migrations
                         UserName = c.String(),
                     })
                 .PrimaryKey(t => t.UserId);
-
+            
             CreateTable(
                 "dbo.whatsnews",
                 c => new
@@ -24,14 +24,13 @@ namespace p.Migrations
                         Work = c.String(),
                     })
                 .PrimaryKey(t => t.WorkTime);
-
+            
             CreateTable(
                 "dbo.Vendors",
                 c => new
                     {
                         ID = c.Int(nullable: false),
                         Version = c.Int(nullable: false),
-                        Timestamp = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
                         Name = c.String(nullable: false),
                         Person = c.String(),
                         Address = c.String(),
@@ -43,17 +42,17 @@ namespace p.Migrations
                         Phone = c.String(),
                         eMail = c.String(),
                         WebSite = c.String(),
+                        Timestamp = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
                         Remarks = c.String(),
                     })
                 .PrimaryKey(t => new { t.ID, t.Version });
-
+            
             CreateTable(
                 "dbo.Products",
                 c => new
                     {
                         ID = c.Int(nullable: false),
                         Version = c.Int(nullable: false),
-                        Timestamp = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
                         Name = c.String(nullable: false),
                         Category = c.String(),
                         Description = c.String(),
@@ -63,10 +62,11 @@ namespace p.Migrations
                         LastPurchaseRate = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Color = c.String(),
                         Image = c.Binary(),
+                        Timestamp = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
                         Remarks = c.String(),
                     })
                 .PrimaryKey(t => new { t.ID, t.Version });
-
+            
             CreateTable(
                 "dbo.Stores",
                 c => new
@@ -79,18 +79,18 @@ namespace p.Migrations
                         Remarks = c.String(),
                     })
                 .PrimaryKey(t => new { t.ID, t.Version });
-
+            
             CreateTable(
                 "dbo.Contracts",
                 c => new
                     {
                         ID = c.Int(nullable: false),
                         Version = c.Int(nullable: false),
-                        Timestamp = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
                         StartDate = c.DateTime(nullable: false),
                         EndDate = c.DateTime(nullable: false),
                         VendorID = c.Int(nullable: false),
                         Recurrence = c.String(),
+                        Timestamp = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
                         Remarks = c.String(),
                         Vendor_ID = c.Int(),
                         Vendor_Version = c.Int(),
@@ -98,7 +98,7 @@ namespace p.Migrations
                 .PrimaryKey(t => new { t.ID, t.Version })
                 .ForeignKey("dbo.Vendors", t => new { t.Vendor_ID, t.Vendor_Version })
                 .Index(t => new { t.Vendor_ID, t.Vendor_Version });
-
+            
             CreateTable(
                 "dbo.ContractItems",
                 c => new
@@ -119,7 +119,7 @@ namespace p.Migrations
                 .ForeignKey("dbo.Contracts", t => new { t.Contract_ID, t.Contract_Version })
                 .Index(t => new { t.Product_ID, t.Product_Version })
                 .Index(t => new { t.Contract_ID, t.Contract_Version });
-
+            
             CreateTable(
                 "dbo.PurchaseOrders",
                 c => new
@@ -141,7 +141,7 @@ namespace p.Migrations
                 .ForeignKey("dbo.Stores", t => new { t.Store_ID, t.Store_Version })
                 .Index(t => new { t.Vendor_ID, t.Vendor_Version })
                 .Index(t => new { t.Store_ID, t.Store_Version });
-
+            
             CreateTable(
                 "dbo.POItems",
                 c => new
@@ -162,24 +162,24 @@ namespace p.Migrations
                 .ForeignKey("dbo.PurchaseOrders", t => new { t.PurchaseOrder_ID, t.PurchaseOrder_Version })
                 .Index(t => new { t.Product_ID, t.Product_Version })
                 .Index(t => new { t.PurchaseOrder_ID, t.PurchaseOrder_Version });
-
+            
             CreateTable(
                 "dbo.GRNs",
                 c => new
                     {
                         ID = c.Int(nullable: false),
                         Version = c.Int(nullable: false),
-                        Timestamp = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
                         Date = c.DateTime(nullable: false),
                         POID = c.Int(nullable: false),
                         VendorID = c.Int(nullable: false),
                         VendorInvoice = c.String(),
+                        Timestamp = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
                         Remarks = c.String(),
                     })
                 .PrimaryKey(t => new { t.ID, t.Version });
-
+            
         }
-
+        
         public override void Down()
         {
             DropIndex("dbo.POItems", new[] { "PurchaseOrder_ID", "PurchaseOrder_Version" });

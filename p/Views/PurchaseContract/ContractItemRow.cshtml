@@ -1,6 +1,8 @@
 ﻿@using p.Models;
+@using p.ViewModels;
 
-@model ContractItem
+@*@model ContractItem*@
+@model ContractItemViewModel
 
 <tr style="padding-bottom: 15px">
     @using (Html.BeginCollectionItem("ContractItems"))
@@ -10,23 +12,26 @@
         </td>    
 
         <td class="combo">
-            @Html.DropDownList("ProductID", String.Empty)
-            @Html.ValidationMessageFor(model => model.ProductID)
+            @*@Html.DropDownList("ProductID", String.Empty)*@
+            @*@Html.DropDownListFor(model => model.ProductID, Model.Products)*@
+            @*@Html.ValidationMessageFor(model => model.ProductID)*@
+            @Html.DropDownListFor(model => model.ci  .ProductID, Model.Products)
+            @Html.ValidationMessageFor(model => model.ci .ProductID)
         </td>
 
         <td>
-            @Html.EditorFor(model => model.Rate)
-            @Html.ValidationMessageFor(model => model.Rate)
+            @Html.EditorFor(model => model.ci .Rate)
+            @Html.ValidationMessageFor(model => model.ci .Rate)
         </td>
 
         <td>
-            @Html.EditorFor(model => model.Qty)
-            @Html.ValidationMessageFor(model => model.Qty)
+            @Html.EditorFor(model => model.ci .Qty)
+            @Html.ValidationMessageFor(model => model.ci .Qty)
         </td>  
 
         <td>
-            @Html.EditorFor(model => model.Amount)
-            @Html.ValidationMessageFor(model => model.Amount)
+            @Html.EditorFor(model => model.ci .Amount)
+            @Html.ValidationMessageFor(model => model.ci .Amount)
         </td>  
 
         <td>

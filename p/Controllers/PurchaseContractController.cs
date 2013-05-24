@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using p.Models;
+using Rotativa;
 
 namespace p.Controllers
 {
@@ -61,7 +62,8 @@ namespace p.Controllers
             {
                 //if (prd.RoL > 5)
                 //{
-                contractItem = new ContractItem { Product = prd, ProductID = prd.ID, Rate = prd.LastPurchaseRate, Qty = prd.RoQ, Amount = prd.LastPurchaseRate * prd.RoQ };
+                //contractItem = new ContractItem { Product = prd, ProductID = prd.ID, Rate = prd.LastPurchaseRate, Qty = prd.RoQ, Amount = prd.LastPurchaseRate * prd.RoQ };
+                contractItem = new ContractItem { ProductID = prd.ID, Rate = prd.LastPurchaseRate, Qty = prd.RoQ, Amount = prd.LastPurchaseRate * prd.RoQ };
                 CreateProductsList(contractItem);
                 newContract.ContractItems.Add(contractItem);
                 //}
@@ -113,7 +115,7 @@ namespace p.Controllers
 
         public ActionResult Edit(int id = 0, int version = 0)
         {
-           
+
             Contract contract = db.Contracts.Find(id, version);
             if (contract == null)
             {
@@ -121,13 +123,15 @@ namespace p.Controllers
             }
 
             CreateVendorsList(contract);
+            CreateProductsList();
 
             db.Entry(contract).Collection(t => t.ContractItems).Load();
             foreach (ContractItem citem in contract.ContractItems)
             {
-                CreateProductsList(citem);
+                //citem.Products = CreateProductsList();
+                //CreateProductsList(citem);
             }
-            
+
             return View(contract);
         }
 
@@ -172,6 +176,10 @@ namespace p.Controllers
         //
         // GET: /PurchaseContract/Delete/5
 
+        public ActionResult Print(int id = 0, int version = 0)
+        {
+            return new ActionAsPdf("Edit", new { id = id, version = version }) { FileName = "contract.pdf" };
+        }
         public ActionResult Delete(int id = 0, int version = 0)
         {
             Contract contract = db.Contracts.Find(id, version);
@@ -218,12 +226,35 @@ namespace p.Controllers
                 });
             this.ViewData["VendorID"] = new SelectList(newList, "Id", "Name", contract.VendorID);
         }
+        //private void CreateProductsList(ContractItem contractItem)
+        //{
+        //    var lastVersions = from n in db.Products
+        //                       group n by n.ID into g
+        //                       select g.OrderByDescending(t => t.Version).FirstOrDefault();
+        //    this.ViewData["ProductID"] = new SelectList(lastVersions, "Id", "Name", contractItem.ProductID);
+        //}
+        //private SelectList CreateProductsList()
+        //{
+        //    var lastVersions = from n in db.Products
+        //                       group n by n.ID into g
+        //                       select g.OrderByDescending(t => t.Version).FirstOrDefault();
+        //    return new SelectList(lastVersions, "Id", "Name");
+
+        //}
         private void CreateProductsList(ContractItem contractItem)
         {
             var lastVersions = from n in db.Products
                                group n by n.ID into g
                                select g.OrderByDescending(t => t.Version).FirstOrDefault();
             this.ViewData["ProductID"] = new SelectList(lastVersions, "Id", "Name", contractItem.ProductID);
+
+        }
+        private void CreateProductsList()
+        {
+            var lastVersions = from n in db.Products
+                               group n by n.ID into g
+                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            this.ViewData["ProductID"] = new SelectList(lastVersions, "Id", "Name");
         }
         #endregion
     }

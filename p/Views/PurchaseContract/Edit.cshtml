@@ -1,4 +1,6 @@
-﻿@model p.Models.Contract
+﻿@using p.Models;
+@using p.ViewModels;
+@model Contract
 
 @{
     ViewBag.Title = "master contract edit";
@@ -84,13 +86,16 @@
 
             @if (Model == null || Model.ContractItems == null || Model.ContractItems.Count == 0)
             {
-                <tr><td>None.</td></tr>
+                <tr>
+                    <td>None.</td>
+                </tr>
             }
             @if (Model != null && Model.ContractItems != null)
             {
                 foreach (ContractItem contractItem in Model.ContractItems)
                 {
-                    Html.RenderPartial("ContractItemRow", contractItem);
+                    //Html.RenderPartial("ContractItemRow", contractItem);
+                    Html.RenderPartial("ContractItemRow", new ContractItemViewModel { ci = contractItem, Products = ViewData["ProductID"] as SelectList });
                 }
             }
         </table>
@@ -111,12 +116,10 @@
     </fieldset>
     <p>
         <input type="submit" value="Save" />
+        @Html.ActionLink("Print", "Print", new { id = Model.ID, version = Model.Version })
+        @Html.ActionLink("Back to List", "Index")
     </p>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     <script>
