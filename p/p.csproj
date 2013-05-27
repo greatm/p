@@ -313,6 +313,7 @@
     <Content Include="App_Browsers\qt.browser" />
     <None Include="Properties\PublishProfiles\p.esamadhan.net.pubxml" />
     <None Include="Scripts\jquery-2.0.0.intellisense.js" />
+    <Content Include="Images\ajax-loader.gif" />
     <Content Include="Images\draggable-icon.png" />
     <Content Include="Images\es_logo.png" />
     <Content Include="NuGet.exe" />
