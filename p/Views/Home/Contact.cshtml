@@ -52,6 +52,6 @@
     @Html.TextArea("mailMessage")
     <br />
     <input type="submit" value="send mail" />
-    <img id="ajax-loader" src="@Url.Content("~/Images/ajax-loader.gif")" style="display:none"/>
+    <img id="ajax-loader" alt="please wait, sending" src="@Url.Content("~/Images/ajax-loader.gif")" style="display:none"/>
 }
-<div id="mailResult" style="display: none"></div>
+<div id="mailResult"></div>

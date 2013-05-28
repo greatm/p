@@ -66,8 +66,8 @@ namespace p.Controllers
                 return RedirectToAction("Index");
             }
             CreateVendorsList(purchaseorder);
-                CreateProductsList();
-       
+            CreateProductsList();
+
             return View(purchaseorder);
         }
 

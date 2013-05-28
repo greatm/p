@@ -11,11 +11,12 @@ namespace p.Mailers
 
         public virtual MvcMailMessage MailMessage(string mailMessage)
         {
+            ViewBag.MessageBody = mailMessage;
             return Populate(x =>
             {
                 x.To.Add("manoj.great@hotmail.com");
                 x.Subject = "mail from p mvc app";
-                x.Body = mailMessage;
+                x.Body = "from inside";
                 x.ViewName = "Welcome";
             });
         }
