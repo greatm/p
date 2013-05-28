@@ -38,9 +38,6 @@ namespace p.Controllers
             return View(product);
         }
 
-        //
-        // GET: /MasterProduct/Create
-
         public ActionResult Create()
         {
             return View();
@@ -93,35 +90,10 @@ namespace p.Controllers
         {
             if (ModelState.IsValid)
             {
-                //db.Entry(product).State = EntityState.Modified;
-                //try
-                //{ db.SaveChanges(); }
-                //catch (DBConcurrencyException)
-                //{
-                //    if (ModelState.IsValid)
-                //    {
-                //        //db.Products.Add(product);
-                //        db.SaveChanges();
-                //        return RedirectToAction("Index");
-                //    }
-                //}
-                Product newProduct = new Product
-                {
-                    ID = product.ID,
-                    Version = product.Version + 1,
-                    //Timestamp = product.Timestamp,
-                    Name = product.Name,
-                    Category = product.Category,
-                    Description = product.Description,
-                    UoM = product.UoM,
-                    RoL = product.RoL,
-                    RoQ = product.RoQ,
-                    LastPurchaseRate = product.LastPurchaseRate,
-                    Color = product.Color,
-                    Image = product.Image,
-                    Remarks = product.Remarks
-                };
-                db.Products.Add(newProduct);
+                Product newItem = product;
+                newItem.Version = product.Version + 1;
+                newItem.EntryDate = DateTime.Now;
+                db.Products.Add(newItem);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

@@ -418,7 +418,6 @@
     <Content Include="Views\UserMailer\_Layout.cshtml" />
     <Content Include="Views\UserMailer\Welcome.cshtml" />
     <Content Include="Views\PurchasePO\POItemEntry.cshtml" />
-    <Content Include="Views\PurchaseContract\ContractItemRow1.cshtml" />
     <Content Include="Views\PaymentIssue\Index.cshtml" />
     <Content Include="Views\PaymentIssue\Details.cshtml" />
     <Content Include="Views\PaymentIssue\Create.cshtml" />

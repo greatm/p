@@ -65,7 +65,9 @@ namespace p.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            CreateVendorsList(purchaseorder);
+                CreateProductsList();
+       
             return View(purchaseorder);
         }
 
@@ -137,10 +139,10 @@ namespace p.Controllers
         {
             this.ViewData["StoreID"] = new SelectList(db.Products, "Id", "Name", workPO.StoreID);
         }
-        private void CreateProductsList(POItem poitem)
-        {
-            this.ViewData["ProductID"] = new SelectList(db.Products, "Id", "Name", poitem.ProductID);
-        }
+        //private void CreateProductsList(POItem poitem)
+        //{
+        //    this.ViewData["ProductID"] = new SelectList(db.Products, "Id", "Name", poitem.ProductID);
+        //}
         private void CreateProductsList()
         {
             this.ViewData["ProductID"] = new SelectList(db.Products, "Id", "Name");

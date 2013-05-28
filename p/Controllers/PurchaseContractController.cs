@@ -113,11 +113,11 @@ namespace p.Controllers
             CreateProductsList();
 
             db.Entry(contract).Collection(t => t.ContractItems).Load();
-            foreach (ContractItem citem in contract.ContractItems)
-            {
+            //foreach (ContractItem citem in contract.ContractItems)
+            //{
                 //citem.Products = CreateProductsList();
                 //CreateProductsList(citem);
-            }
+            //}
 
             return View(contract);
         }
@@ -231,8 +231,7 @@ namespace p.Controllers
                                group n by n.ID into g
                                select g.OrderByDescending(t => t.Version).FirstOrDefault();
             this.ViewData["Products"] = new SelectList(lastVersions, "Id", "Name", contractItem.ProductID);
-
-        }
+                    }
         private void CreateProductsList()
         {
             var lastVersions = from n in db.Products
