@@ -60,6 +60,7 @@ namespace p.Controllers
                 catch { }
                 product.ID = iId;
                 product.Version = 1;
+                product.EntryDate = DateTime.Now;
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -63,6 +63,7 @@ namespace p.Controllers
                 catch { }
                 store.ID = iId;
                 store.Version = 1;
+                store.EntryDate = DateTime.Now;
                 db.Stores.Add(store);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -94,15 +95,18 @@ namespace p.Controllers
             if (ModelState.IsValid)
             {
                 //db.Entry(store).State = EntityState.Modified;
-                Store newItem = new Store
-                {
-                    ID = store.ID,
-                    Version = store.Version + 1,
-                    //Timestamp = store.Timestamp,
-                    Name = store.Name,
-                    Description = store.Description,
-                    Remarks = store.Remarks
-                };
+                //Store newItem = new Store
+                //{
+                //    ID = store.ID,
+                //    Version = store.Version + 1,
+                //    //Timestamp = store.Timestamp,
+                //    Name = store.Name,
+                //    Description = store.Description,
+                //    Remarks = store.Remarks
+                //};
+                Store newItem = store;
+                newItem.Version = store.Version + 1;
+                newItem.EntryDate = DateTime.Now;
                 db.Stores.Add(newItem);
                 db.SaveChanges();
                 return RedirectToAction("Index");
