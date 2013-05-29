@@ -13,20 +13,17 @@ namespace p.Controllers
     {
         private ContextP db = new ContextP();
 
-        //
-        // GET: /PurchaseGrn/
-
         public ActionResult Index()
         {
-            return View(db.GRNs.ToList());
+            var lastVersions = from n in db.GRNs
+                               group n by n.ID into g
+                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            return View(lastVersions);
         }
 
-        //
-        // GET: /PurchaseGrn/Details/5
-
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(int id = 0, int version = 0)
         {
-            GRN grn = db.GRNs.Find(id);
+            GRN grn = db.GRNs.Find(id, version);
             if (grn == null)
             {
                 return HttpNotFound();
@@ -51,6 +48,15 @@ namespace p.Controllers
         {
             if (ModelState.IsValid)
             {
+                int iId = 1;
+                try
+                {
+                    iId = db.GRNs.Max(t => t.ID) + 1;
+                }
+                catch { }
+                grn.ID = iId;
+                grn.Version = 1;
+                grn.EntryDate = DateTime.Now;
                 db.GRNs.Add(grn);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -62,9 +68,9 @@ namespace p.Controllers
         //
         // GET: /PurchaseGrn/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(int id = 0, int version = 0)
         {
-            GRN grn = db.GRNs.Find(id);
+            GRN grn = db.GRNs.Find(id, version);
             if (grn == null)
             {
                 return HttpNotFound();
@@ -81,7 +87,11 @@ namespace p.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(grn).State = EntityState.Modified;
+                GRN newItem = grn;
+                newItem.Version = grn.Version + 1;
+                newItem.EntryDate = DateTime.Now;
+                db.GRNs.Add(newItem);
+                //db.Entry(grn).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -91,9 +101,9 @@ namespace p.Controllers
         //
         // GET: /PurchaseGrn/Delete/5
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(int id = 0, int version = 0)
         {
-            GRN grn = db.GRNs.Find(id);
+            GRN grn = db.GRNs.Find(id, version);
             if (grn == null)
             {
                 return HttpNotFound();
@@ -106,7 +116,7 @@ namespace p.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id, int version = 0)
         {
             GRN grn = db.GRNs.Find(id);
             db.GRNs.Remove(grn);

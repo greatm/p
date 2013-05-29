@@ -92,7 +92,7 @@ namespace p.Controllers
             CreateVendorsList(purchaseorder);
             CreateStoresList(purchaseorder);
             CreateProductsList();
-            db.Entry(purchaseorder).Collection(t => t.POItems ).Load();
+            db.Entry(purchaseorder).Collection(t => t.POItems).Load();
 
             return View(purchaseorder);
         }
@@ -103,13 +103,11 @@ namespace p.Controllers
         {
             if (ModelState.IsValid)
             {
-                PurchaseOrder newItem = purchaseorder; //new Contract();
-                //newItem = contract;
+                PurchaseOrder newItem = purchaseorder;
                 newItem.Version = purchaseorder.Version + 1;
                 newItem.EntryDate = DateTime.Now;
 
                 db.PurchaseOrders.Add(newItem);
-                //db.Entry(purchaseorder).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

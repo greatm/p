@@ -13,20 +13,20 @@ namespace p.Controllers
     {
         private ContextP db = new ContextP();
 
-        //
-        // GET: /PaymentIssue/
-
         public ActionResult Index()
         {
-            return View(db.Payments.ToList());
+            var lastVersions = from n in db.Payments
+                               group n by n.ID into g
+                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            return View(lastVersions);
         }
 
         //
         // GET: /PaymentIssue/Details/5
 
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(int id = 0, int version = 0)
         {
-            Payment payment = db.Payments.Find(id);
+            Payment payment = db.Payments.Find(id, version);
             if (payment == null)
             {
                 return HttpNotFound();
@@ -62,9 +62,9 @@ namespace p.Controllers
         //
         // GET: /PaymentIssue/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(int id = 0, int version = 0)
         {
-            Payment payment = db.Payments.Find(id);
+            Payment payment = db.Payments.Find(id, version);
             if (payment == null)
             {
                 return HttpNotFound();
@@ -91,9 +91,9 @@ namespace p.Controllers
         //
         // GET: /PaymentIssue/Delete/5
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(int id = 0, int version = 0)
         {
-            Payment payment = db.Payments.Find(id);
+            Payment payment = db.Payments.Find(id, version);
             if (payment == null)
             {
                 return HttpNotFound();
@@ -106,7 +106,7 @@ namespace p.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id, int version = 0)
         {
             Payment payment = db.Payments.Find(id);
             db.Payments.Remove(payment);

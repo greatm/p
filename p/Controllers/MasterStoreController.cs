@@ -13,9 +13,6 @@ namespace p.Controllers
     {
         private ContextP db = new ContextP();
 
-        //
-        // GET: /MasterStore/
-
         public ActionResult Index()
         {
             var lastVersions = from n in db.Stores
@@ -24,9 +21,6 @@ namespace p.Controllers
             return View(lastVersions.ToList());
             //return View(db.Stores.ToList());
         }
-
-        //
-        // GET: /MasterStore/Details/5
 
         public ActionResult Details(int id = 0, int version = 0)
         {
@@ -38,16 +32,10 @@ namespace p.Controllers
             return View(store);
         }
 
-        //
-        // GET: /MasterStore/Create
-
         public ActionResult Create()
         {
             return View();
         }
-
-        //
-        // POST: /MasterStore/Create
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -72,9 +60,6 @@ namespace p.Controllers
             return View(store);
         }
 
-        //
-        // GET: /MasterStore/Edit/5
-
         public ActionResult Edit(int id = 0, int version = 0)
         {
             Store store = db.Stores.Find(id, version);
@@ -85,25 +70,12 @@ namespace p.Controllers
             return View(store);
         }
 
-        //
-        // POST: /MasterStore/Edit/5
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Store store)
         {
             if (ModelState.IsValid)
             {
-                //db.Entry(store).State = EntityState.Modified;
-                //Store newItem = new Store
-                //{
-                //    ID = store.ID,
-                //    Version = store.Version + 1,
-                //    //Timestamp = store.Timestamp,
-                //    Name = store.Name,
-                //    Description = store.Description,
-                //    Remarks = store.Remarks
-                //};
                 Store newItem = store;
                 newItem.Version = store.Version + 1;
                 newItem.EntryDate = DateTime.Now;

@@ -127,30 +127,11 @@ namespace p.Controllers
         {
             if (ModelState.IsValid)
             {
-                //db.Entry(contract).State = EntityState.Modified;
-                //Contract newItem = new Contract
-                //{
-                //    ID = product.ID,
-                //    Version = product.Version + 1,
-                //    Timestamp = product.Timestamp,
-                //    Name = product.Name,
-                //    Category = product.Category,
-                //    Description = product.Description,
-                //    UoM = product.UoM,
-                //    RoL = product.RoL,
-                //    RoQ = product.RoQ,
-                //    LastPurchaseRate = product.LastPurchaseRate,
-                //    Color = product.Color,
-                //    Image = product.Image,
-                //    Remarks = product.Remarks
-                //};
-                Contract newItem = contract; //new Contract();
-                //newItem = contract;
+                Contract newItem = contract;
                 newItem.Version = contract.Version + 1;
                 newItem.EntryDate = DateTime.Now;
 
                 db.Contracts.Add(newItem);
-
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
