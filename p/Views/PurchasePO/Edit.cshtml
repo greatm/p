@@ -25,18 +25,18 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.VendorID)
+            @Html.LabelFor(model => model.Vendor)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.VendorID)
+            @Html.DropDownList("VendorID", String.Empty)
             @Html.ValidationMessageFor(model => model.VendorID)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.StoreID)
+            @Html.LabelFor(model => model.Store)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.StoreID)
+            @Html.DropDownList("StoreID", String.Empty)
             @Html.ValidationMessageFor(model => model.StoreID)
         </div>
 
@@ -47,11 +47,68 @@
             @Html.EditorFor(model => model.Remarks)
             @Html.ValidationMessageFor(model => model.Remarks)
         </div>
-
-        <p>
-            <input type="submit" value="Save" />
-        </p>
     </fieldset>
+    <fieldset>
+        <legend>POItems</legend>
+
+        <style type="text/css">
+            input {
+                border: 1px solid #e2e2e2;
+                background: #fff;
+                color: #333;
+                font-size: 1.2em;
+                margin: 5px 0 6px 0;
+                padding: 5px;
+                width: 150px;
+            }
+        </style>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th style="width: 100px">Product</th>
+                    <th style="width: 100px">Rate</th>
+                    <th style="width: 100px">Quantity</th>
+                    <th style="width: 100px">Amount</th>
+                    <th style="width: 100px"></th>
+                </tr>
+            </thead>
+
+            <tbody id="itemEditor">
+                @if (Model == null || Model.POItems == null || Model.POItems.Count == 0)
+                {
+                    <tr>
+                        <td>None.</td>
+                    </tr>
+                }
+
+                @if (Model != null && Model.POItems != null)
+                {
+                    foreach (POItem contractItem in Model.POItems)
+                    {
+                        Html.RenderPartial("POItemEntry", contractItem);
+                    }
+                }
+            </tbody>
+        </table>
+
+        <a id="addAnother" href="#">Add another</a>
+        <script type="text/javascript">
+            $(function () {
+                $("#itemEditor").sortable();
+                $("#addAnother").click(function () {
+                    $.get('/PurchasePO/POItemEntryRow', function (template) {
+                        $("#itemEditor").append(template);
+                    });
+                });
+            });
+        </script>
+
+    </fieldset>
+    <p>
+        <input type="submit" value="Save" />
+    </p>
+    
 }
 
 <div>
@@ -59,5 +116,8 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+  <script>
+      $("#VendorID").combobox();
+      $("#StoreID").combobox();
+    </script>
 }

@@ -23,7 +23,6 @@ namespace p.Controllers
                                group n by n.ID into g
                                select g.OrderByDescending(t => t.Version).FirstOrDefault();
             return View(lastVersions.ToList());
-            //return View(db.PurchaseOrders.ToList());
         }
 
         public ActionResult Details(int id = 0, int version = 0)
@@ -46,7 +45,6 @@ namespace p.Controllers
                 if (prd.RoL > 5)
                 {
                     poitem = new POItem { Product = prd, ProductID = prd.ID, Rate = prd.LastPurchaseRate, Qty = prd.RoQ, Amount = prd.LastPurchaseRate * prd.RoQ };
-                    //CreateProductsList(poitem);
                     newPO.POItems.Add(poitem);
                 }
             }
@@ -65,6 +63,15 @@ namespace p.Controllers
         {
             if (ModelState.IsValid)
             {
+                int iId = 1;
+                try
+                {
+                    iId = db.PurchaseOrders.Max(t => t.ID) + 1;
+                }
+                catch { }
+                purchaseorder.ID = iId;
+                purchaseorder.Version = 1;
+                purchaseorder.EntryDate = DateTime.Now;
                 db.PurchaseOrders.Add(purchaseorder);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,6 +89,11 @@ namespace p.Controllers
             {
                 return HttpNotFound();
             }
+            CreateVendorsList(purchaseorder);
+            CreateStoresList(purchaseorder);
+            CreateProductsList();
+            db.Entry(purchaseorder).Collection(t => t.POItems ).Load();
+
             return View(purchaseorder);
         }
 
@@ -91,7 +103,13 @@ namespace p.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(purchaseorder).State = EntityState.Modified;
+                PurchaseOrder newItem = purchaseorder; //new Contract();
+                //newItem = contract;
+                newItem.Version = purchaseorder.Version + 1;
+                newItem.EntryDate = DateTime.Now;
+
+                db.PurchaseOrders.Add(newItem);
+                //db.Entry(purchaseorder).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -128,9 +146,9 @@ namespace p.Controllers
         #region function
         private void CreateVendorsList(PurchaseOrder workPO)
         {
-            var vendors =  from n in db.Vendors
-                                     group n by n.ID into g
-                                     select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            var vendors = from n in db.Vendors
+                          group n by n.ID into g
+                          select g.OrderByDescending(t => t.Version).FirstOrDefault();
             List<object> newList = new List<object>();
             foreach (var vendor in vendors)
                 newList.Add(new
@@ -143,7 +161,10 @@ namespace p.Controllers
         }
         private void CreateStoresList(PurchaseOrder workPO)
         {
-            this.ViewData["StoreID"] = new SelectList(db.Products, "Id", "Name", workPO.StoreID);
+            var lastVersions = from n in db.Stores
+                               group n by n.ID into g
+                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            this.ViewData["StoreID"] = new SelectList(lastVersions, "Id", "Name", workPO.StoreID);
         }
         //private void CreateProductsList(POItem poitem)
         //{
