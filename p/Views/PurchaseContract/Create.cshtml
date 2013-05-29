@@ -71,30 +71,34 @@
                 width: 150px;
             }
         </style>
-        <table id="itemEditor">
-            <tr>
-                <th></th>
-                <th style="width: 100px">Product</th>
-                <th style="width: 100px">Rate</th>
-                <th style="width: 100px">Quantity</th>
-                <th style="width: 100px">Amount</th>
-                <th style="width: 100px"></th>
-            </tr>
-
-            @if (Model == null || Model.ContractItems == null || Model.ContractItems.Count == 0)
-            {
+        <table>
+            <thead>
                 <tr>
-                    <td>None.</td>
+                    <th></th>
+                    <th style="width: 100px">Product</th>
+                    <th style="width: 100px">Rate</th>
+                    <th style="width: 100px">Quantity</th>
+                    <th style="width: 100px">Amount</th>
+                    <th style="width: 100px"></th>
                 </tr>
-            }
-            @if (Model != null && Model.ContractItems != null)
-            {
-                foreach (ContractItem contractItem in Model.ContractItems)
+            </thead>
+
+            <tbody id="itemEditor">
+                @if (Model == null || Model.ContractItems == null || Model.ContractItems.Count == 0)
                 {
-                    Html.RenderPartial("ContractItemRow", contractItem);
-                    // Html.RenderPartial("ContractItemRow", new ContractItemViewModel { ci = contractItem, Products = ViewData["ProductID"] as SelectList });
+                    <tr>
+                        <td>None.</td>
+                    </tr>
                 }
-            }
+                @if (Model != null && Model.ContractItems != null)
+                {
+                    foreach (ContractItem contractItem in Model.ContractItems)
+                    {
+                        Html.RenderPartial("ContractItemRow", contractItem);
+                        // Html.RenderPartial("ContractItemRow", new ContractItemViewModel { ci = contractItem, Products = ViewData["ProductID"] as SelectList });
+                    }
+                }
+            </tbody>
         </table>
 
         <a id="addAnother" href="#">Add another</a>

@@ -48,7 +48,8 @@ namespace p.Models
             context.whatsnews.AddOrUpdate(
                 p => p.WorkTime,
 
-                   //new whatsnew { WorkTime = new DateTime(2013, 5, 24, 15, 00, 0), Work = "create purchase - contract " },
+                   //new whatsnew { WorkTime = new DateTime(2013, 5, 28, 15, 00, 0), Work = "purchase contract – edit – shall load saved items" },
+                   new whatsnew { WorkTime = new DateTime(2013, 5, 28, 15, 00, 0), Work = "purchase contract – edit – shall load saved items" },
                    new whatsnew { WorkTime = new DateTime(2013, 5, 24, 15, 00, 0), Work = "create purchase - contract " },
                    new whatsnew { WorkTime = new DateTime(2013, 5, 24, 14, 00, 0), Work = "send contact email" },
                    new whatsnew { WorkTime = new DateTime(2013, 5, 23, 18, 00, 0), Work = "master product version add" },

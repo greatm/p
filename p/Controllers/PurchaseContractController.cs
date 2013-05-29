@@ -102,7 +102,6 @@ namespace p.Controllers
 
         public ActionResult Edit(int id = 0, int version = 0)
         {
-
             Contract contract = db.Contracts.Find(id, version);
             if (contract == null)
             {
