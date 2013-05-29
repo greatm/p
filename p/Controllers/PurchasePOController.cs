@@ -19,12 +19,16 @@ namespace p.Controllers
 
         public ActionResult Index()
         {
-            return View(db.PurchaseOrders.ToList());
+            var lastVersions = from n in db.PurchaseOrders
+                               group n by n.ID into g
+                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            return View(lastVersions.ToList());
+            //return View(db.PurchaseOrders.ToList());
         }
 
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(int id = 0, int version = 0)
         {
-            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
+            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id, version);
             if (purchaseorder == null)
             {
                 return HttpNotFound();
@@ -71,9 +75,9 @@ namespace p.Controllers
             return View(purchaseorder);
         }
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(int id = 0, int version = 0)
         {
-            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
+            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id, version);
             if (purchaseorder == null)
             {
                 return HttpNotFound();
@@ -94,9 +98,9 @@ namespace p.Controllers
             return View(purchaseorder);
         }
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(int id = 0, int version = 0)
         {
-            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
+            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id, version);
             if (purchaseorder == null)
             {
                 return HttpNotFound();
@@ -106,9 +110,9 @@ namespace p.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id, int version = 0)
         {
-            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
+            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id, version);
             db.PurchaseOrders.Remove(purchaseorder);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -124,7 +128,9 @@ namespace p.Controllers
         #region function
         private void CreateVendorsList(PurchaseOrder workPO)
         {
-            var vendors = db.Vendors;
+            var vendors =  from n in db.Vendors
+                                     group n by n.ID into g
+                                     select g.OrderByDescending(t => t.Version).FirstOrDefault();
             List<object> newList = new List<object>();
             foreach (var vendor in vendors)
                 newList.Add(new
@@ -145,7 +151,10 @@ namespace p.Controllers
         //}
         private void CreateProductsList()
         {
-            this.ViewData["ProductID"] = new SelectList(db.Products, "Id", "Name");
+            var lastVersions = from n in db.Products
+                               group n by n.ID into g
+                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            this.ViewData["Products"] = new SelectList(lastVersions, "Id", "Name");
         }
         #endregion
     }
