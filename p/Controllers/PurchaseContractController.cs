@@ -162,8 +162,13 @@ namespace p.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id, int version = 0)
         {
-            Contract contract = db.Contracts.Find(id, version);
-            db.Contracts.Remove(contract);
+            //Contract contract = db.Contracts.Find(id, version);
+            //db.Contracts.Remove(contract);
+            var itemsToDelete = db.Contracts.Where(t => t.ID == id);
+            foreach (var item in itemsToDelete)
+            {
+                if (item != null) db.Contracts.Remove(item);
+            }
             db.SaveChanges();
             return RedirectToAction("Index");
         }
