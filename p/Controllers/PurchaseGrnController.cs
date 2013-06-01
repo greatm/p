@@ -91,7 +91,6 @@ namespace p.Controllers
                 newItem.Version = grn.Version + 1;
                 newItem.EntryDate = DateTime.Now;
                 db.GRNs.Add(newItem);
-                //db.Entry(grn).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
