@@ -48,7 +48,9 @@ namespace p.Models
             context.whatsnews.AddOrUpdate(
                 p => p.WorkTime,
 
-                   //new whatsnew { WorkTime = new DateTime(2013, 6, 01, 19, 00, 0), Work = "A P entryDate put while saving - grn" },
+                   //new whatsnew { WorkTime = new DateTime(2013, 6, 02, 19, 00, 0), Work = "A p send email" },
+                   new whatsnew { WorkTime = new DateTime(2013, 6, 02, 20, 00, 0), Work = "A P contract item – move with drag" },
+                   new whatsnew { WorkTime = new DateTime(2013, 6, 02, 19, 00, 0), Work = "A p send email" },
                    new whatsnew { WorkTime = new DateTime(2013, 6, 01, 19, 00, 0), Work = "A P entryDate put while saving - grn" },
                    new whatsnew { WorkTime = new DateTime(2013, 6, 01, 18, 00, 0), Work = "A P entryDate put while saving - po" },
                    new whatsnew { WorkTime = new DateTime(2013, 6, 01, 17, 00, 0), Work = "A P entryDate put while saving - contract" },
